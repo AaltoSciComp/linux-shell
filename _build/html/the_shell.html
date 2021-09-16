@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Basic shell &mdash; Linux shell tutorial  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Starting out" href="starting_commands.html" />
+    <link rel="prev" title="1.1. session: processes and files" href="processes_and_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linux shell tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="part_one.html">PART #1. Linux shell basics</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="processes_and_files.html">1.1. session: processes and files</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic shell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-touch-getting-a-bash-shell">First touch: getting a BASH shell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#about-the-linux-shell">About the Linux Shell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-shell-operation">Basic shell operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="starting_commands.html">Starting out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="processes.html">Processes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interactive_usage.html">1.2. session: interactive usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_two.html">PART #2. Linux shell scripting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linux shell tutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="part_one.html">PART #1. Linux shell basics</a> &raquo;</li>
+        
+          <li><a href="processes_and_files.html">1.1. session: processes and files</a> &raquo;</li>
+        
+      <li>Basic shell</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/content/blob/main/content/the_shell.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-shell">
+<h1>Basic shell<a class="headerlink" href="#basic-shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-touch-getting-a-bash-shell">
+<h2>First touch: getting a BASH shell<a class="headerlink" href="#first-touch-getting-a-bash-shell" title="Permalink to this headline">¶</a></h2>
+<p>Set yourself up with a BASH shell.  Connect to a server or open on your own computer.
+Examples and demos given during the lecture are done on Triton, though should work
+on all other Linux installations.</p>
+<ul class="simple">
+<li><p>Linux and Mac users: just open a terminal window. If you wish you can login
+to Triton or any other <a class="reference external" href="https://scicomp.aalto.fi/aalto/remoteaccess.html">Aalto Linux server</a>.</p></li>
+<li><p>Windows users: install PuTTY <a href="#id3"><span class="problematic" id="id1">[#putty]_</span></a> then <em>SSH</em> to any interactive server
+at Aalto or your department.</p></li>
+</ul>
+</div>
+<div class="section" id="about-the-linux-shell">
+<h2>About the Linux Shell<a class="headerlink" href="#about-the-linux-shell" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A <em>shell</em> is what you get when your terminal window is open. It is a
+command-line (CLI), an interface that interpreters and executes the
+commands.</p></li>
+<li><p>The name comes from being a “shell” (layer) around the operating
+system.  It connects and binds all programs together.</p></li>
+<li><p>This is the basic, raw method of using UNIX-like systems.  It may
+not be used everyday, but it’s really good (necessary) for any type
+of automation and scripting - as is often needed in science, when
+connecting pieces together, or when using Triton.</p></li>
+<li><p>There are multiple shells.  This talk is about <a class="reference external" href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">bash</a>, which is the
+most common one.  <a class="reference external" href="https://en.wikipedia.org/wiki/Z_shell">zsh</a> is
+another common shell which is somewhat similar but has some more
+powerful features.  <a class="reference external" href="https://en.wikipedia.org/wiki/Tcsh">tcsh</a> is
+another shell from a completely different family (the csh family),
+which has quite different syntax.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bash</span></code> is a “Bourne shell”: the “bourne-again shell”.  An open source
+version of original Bourne shell.</p></li>
+<li><p>It may not be obvious, but the concepts here also apply to Windows
+programs and will help you understand them.  They also apply more
+directly to Mac programs, because Mac is unix under the hood.</p></li>
+</ul>
+</div>
+<div class="section" id="basic-shell-operation">
+<h2>Basic shell operation<a class="headerlink" href="#basic-shell-operation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You type things on the screen (standard input or stdin).  The shell
+uses this to make a command.</p></li>
+<li><p>The shell takes the command, splits it into words, does a lot more
+preprocessing, and then runs it.</p></li>
+<li><p>When the command runs, the keyboard (still standard input) goes to
+the process, output (standard output) goes to the screen.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="starting_commands.html" class="btn btn-neutral float-right" title="Starting out" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="processes_and_files.html" class="btn btn-neutral float-left" title="1.1. session: processes and files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Aalto Scicomp.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

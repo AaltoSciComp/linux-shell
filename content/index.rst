@@ -1,4 +1,3 @@
-====================
 Linux shell tutorial
 ====================
 
@@ -53,14 +52,15 @@ Who is the course for?
 - Part #2 for people with intermediate/advanced level of Linux/Mac shell
 
 
-About the course
-----------------
-
-
-
-
 Credits
 -------
+
+1 credit if completed together with Linux shell basics -course and all 
+exercises completed and sent to us.
+
+
+References
+----------
 
 Based on
  - ``man bash`` v4.2 (Triton default version in Feb 2018)
@@ -68,3 +68,22 @@ Based on
  - UNIX Power Tools, Shelley Powers etc, 3rd ed, O'Reilly
  - common sense and 20+ years Linux experience
  - see also other references in the text
+
+
+
+
+
+.. toctree::
+   :caption: Lessons
+   :hidden:
+
+   part_one
+   part_two
+
+
+.. toctree::
+   :caption: About
+   :hidden:
+
+   contact
+   about

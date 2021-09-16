@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File tools and command line utilities &mdash; Linux shell tutorial  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input and output" href="input_output.html" />
+    <link rel="prev" title="How to make things faster: hotkeys" href="hotkeys.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linux shell tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="part_one.html">PART #1. Linux shell basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="processes_and_files.html">1.1. session: processes and files</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="interactive_usage.html">1.2. session: interactive usage</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="find.html">Find</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_archive_transfer.html">File archiving and transferring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hotkeys.html">How to make things faster: hotkeys</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File tools and command line utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialization-files-and-configuration">Initialization files and configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-editing-viewing-file">Creating/editing/viewing file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utilities-the-building-blocks-of-shell">Utilities: the building blocks of shell</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="input_output.html">Input and output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines_grep.html">Pipelines and grep</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="part_two.html">PART #2. Linux shell scripting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linux shell tutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="part_one.html">PART #1. Linux shell basics</a> &raquo;</li>
+        
+          <li><a href="interactive_usage.html">1.2. session: interactive usage</a> &raquo;</li>
+        
+      <li>File tools and command line utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/content/blob/main/content/files_continue.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-tools-and-command-line-utilities">
+<h1>File tools and command line utilities<a class="headerlink" href="#file-tools-and-command-line-utilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="initialization-files-and-configuration">
+<h2>Initialization files and configuration<a class="headerlink" href="#initialization-files-and-configuration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>When the shell first starts (when you login), it reads some files.
+These are normal shell files, and it evaluates normal shell commands
+to set configuration.</p></li>
+<li><p>You can always test things in your own shell and see if it works
+before putting it in the config files.  Highly recommended!</p></li>
+<li><p>You customize your environment means setting or expanding aliases,
+variables, functions.</p></li>
+<li><p>The config files are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> (when SSH) and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> (interactive login to a workstation)</p></li>
+<li><p>they are often a symlink from one to another</p></li>
+</ul>
+</li>
+<li><p>To get an idea how complicated .bashrc can be take a look at &lt;<a class="reference external" href="https://www.tldp.org/LDP/abs/html/sample-bashrc.html">https://www.tldp.org/LDP/abs/html/sample-bashrc.html</a>&gt;</p></li>
+</ul>
+<p>One of the things to play with: command line prompt defined in PS1 <a href="#id3"><span class="problematic" id="id1">[#ps1]_</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS1</span><span class="o">=</span><span class="s2">&quot;[\d </span><span class="se">\t</span><span class="s2"> \u@\h:\w ] $ &quot;</span>
+</pre></div>
+</div>
+<p>For special characters see PROMPTING at <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">bash</span></code>. To make it
+permanent, should be added to <em>.bashrc</em> like <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PS1</span></code>.</p>
+</div>
+<div class="section" id="creating-editing-viewing-file">
+<h2>Creating/editing/viewing file<a class="headerlink" href="#creating-editing-viewing-file" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A <em>text editor</em> edits files as ASCII.  These are your best friend.
+In fact, text files are your best friend: rawest, most efficient,
+longest-lasting way of storing data.</p></li>
+<li><p>“pager” is a generic term for things that view files or data.</p></li>
+</ul>
+<p>Linux command line <em>text editors</em> like:</p>
+<ul class="simple">
+<li><p><em>nano</em> - simplest</p></li>
+<li><p><em>vim</em> - minimal.  To save&amp;quit, <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">:wq</span></code></p></li>
+<li><p><em>emacs</em> - or the simplest one <em>nano</em>.  To save&amp;quit: <code class="docutils literal notranslate"><span class="pre">Ctrl-x</span>
+<span class="pre">Ctrl-c</span></code></p></li>
+</ul>
+<p>To view contents of a file in a scrollable fashion: <code class="docutils literal notranslate"><span class="pre">less</span></code></p>
+<p>Quick look at the text file <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">filename.txt</span></code> (dumps everything to
+screen- beware of non-text binary files or large files!)</p>
+<p>Other quick ways to add something to a file (no need for an editor)</p>
+<p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'Some</span> <span class="pre">sentence,</span> <span class="pre">or</span> <span class="pre">whatever</span> <span class="pre">else</span> <span class="pre">1234567!-+&gt;$#'</span> <span class="pre">&gt;</span> <span class="pre">filename.txt</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&gt;</span> <span class="pre">filename2.txt</span></code> to finish typing and write written to the file, press enter, then Ctrl-d.</p>
+<p><strong>The best text viewer ever</strong> <code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">-S</span></code>  (to open a file in your EDITOR, hit <em>v</em>, to search through type <em>/search_word</em>)</p>
+<p><strong>Watching files while they grow</strong> <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">0</span> <span class="pre">-f</span> <span class="pre">&lt;file&gt;</span></code></p>
+<p>Try: add above mentioned <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PS1</span></code> to <em>.bashrc</em>. Remember <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.bashrc</span></code> to enable changes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Exercise 1.2.2</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>link <em>.bash_profile</em> to <em>.bashrc</em>. Tip: see <code class="docutils literal notranslate"><span class="pre">ln</span></code> command from the previous session.</p></li>
+<li><p>open <em>~/.bashrc</em> for eiditng and add there CDPATH example from above, customize
+it for your needs and test. Tip: remember <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">umask</span> <span class="pre">027</span></code> to <em>.bashrc</em>, try creating files. Tip: <code class="docutils literal notranslate"><span class="pre">umask</span> <span class="pre">-S</span></code> prints your current setting.</p></li>
+<li><p>customize a prompt <code class="docutils literal notranslate"><span class="pre">$PS1</span></code> and add it to your <em>.bashrc</em>, make sure is has
+a current directory name and the hostname in it in the format <em>hostname:/path/to/current/dir</em>.
+Hint: save the original PS1 like <code class="docutils literal notranslate"><span class="pre">oldPS1=$PS1</span></code> to be able to recover it any time.</p></li>
+<li><p>(*) Set some default options for the <code class="docutils literal notranslate"><span class="pre">less</span></code> program in your bashrc.
+Examples: case-insensitive searching, long prompt, wrapping lines.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="utilities-the-building-blocks-of-shell">
+<h2>Utilities: the building blocks of shell<a class="headerlink" href="#utilities-the-building-blocks-of-shell" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>wide range of all kind of utilities available in Linux</p></li>
+<li><p>shell is a glue to bind them all together</p></li>
+<li><p>commandline is often a long list of those utilities joint into pipe
+that pass output of each other further</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="p">;</span> <span class="n">sort</span><span class="p">;</span> <span class="n">tr</span><span class="p">;</span> <span class="n">cut</span><span class="p">;</span> <span class="n">head</span><span class="p">;</span> <span class="n">date</span><span class="p">;</span> <span class="n">tail</span><span class="p">;</span> <span class="n">wc</span><span class="p">;</span> <span class="n">grep</span><span class="p">;</span> <span class="n">uniq</span><span class="p">;</span> <span class="n">paste</span><span class="p">;</span> <span class="n">find</span>  <span class="c1"># and many others</span>
+</pre></div>
+</div>
+<p>We catch many of them on the way.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="input_output.html" class="btn btn-neutral float-right" title="Input and output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hotkeys.html" class="btn btn-neutral float-left" title="How to make things faster: hotkeys" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Aalto Scicomp.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
