@@ -15,6 +15,20 @@ Starred exercises (*) are for advanced users who would like further stimulation.
    - Part #2: Shell basics, know how to create a directory and edit a file from command line
 
 
+Who is the course for?
+----------------------
+
+- Part #1 for those who need a comprehensive dive into shell basics.
+- Part #2 for people with intermediate/advanced level of Linux/Mac shell
+
+
+Credits
+-------
+
+1 credit if completed together with Linux shell basics -course and all 
+exercises completed and sent to scip@aalto.fi.
+
+
 Schedule
 --------
 
@@ -45,20 +59,6 @@ regular expression can be adapted to the lecturer's PS1, this one assumes *]$ co
  - ``tail -n 1 -f demos.out | while read line; do [[ "$line" =~ \]\$\ ([^ ].+)$ ]] && echo ${BASH_REMATCH[1]}; done``
 
 
-Who is the course for?
-----------------------
-
-- Part #1 for those who need a comprehensive dive into shell basics.
-- Part #2 for people with intermediate/advanced level of Linux/Mac shell
-
-
-Credits
--------
-
-1 credit if completed together with Linux shell basics -course and all 
-exercises completed and sent to us.
-
-
 References
 ----------
 
@@ -69,7 +69,16 @@ Based on
  - common sense and 20+ years Linux experience
  - see also other references in the text
 
-
+   .. [#absguide] http://tldp.org/LDP/abs/html/index.html
+   .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+   .. [#xming] http://www.straightrunning.com/XmingNotes/
+   .. [#ps1] https://www.ibm.com/developerworks/linux/library/l-tip-prompt/
+   .. [#find1] https://alvinalexander.com/unix/edu/examples/find.shtml
+   .. [#find2] http://www.softpanorama.org/Tools/Find/index.shtml
+   .. [#putty-sshkeys] https://the.earth.li/~sgtatham/putty/0.70/htmldoc/
+   .. [#umask] https://www.computerhope.com/unix/uumask.htm
+   .. [#printf] https://wiki.bash-hackers.org/commands/builtin/printf
+   .. [#profiling] https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup
 
 
 
@@ -87,3 +96,10 @@ Based on
 
    contact
    about
+
+.. toctree::
+   :caption: Other
+   :hidden:
+
+   to_continue
+   bonus_material

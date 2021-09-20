@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = "Linux shell tutorial"
-copyright = "2021, Aalto Scicomp"
-author = "Aalto Scicomp"
+copyright = "2021, Aalto Science-IT"
+author = "Aalto Science-IT"
 github_user = "coderefinery"
 github_repo_name = ""  # auto-detected from dirname if blank
 github_version = "main"

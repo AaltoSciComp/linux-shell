@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quoting, substitutions, aliases &mdash; Linux shell tutorial  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Variables, functions, environment" href="variables_functions_environments.html" />
+    <link rel="prev" title="PART #2. Linux shell scripting" href="part_two.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linux shell tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_one.html">PART #1. Linux shell basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_two.html">PART #2. Linux shell scripting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quoting, substitutions, aliases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-processing-and-quoting">Command line processing and quoting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#substitute-a-command-output">Substitute a command output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-about-redirection-piping-and-process-substitution">More about redirection, piping and process substitution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aliases">Aliases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="variables_functions_environments.html">Variables, functions, environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays_inputs_here_documents.html">Arrays, input, Here Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traps_debugging_profiling.html">Traps, debugging, profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_crontab_perlawksed.html">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="to_continue.html">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bonus_material.html">Bonus material</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linux shell tutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="part_two.html">PART #2. Linux shell scripting</a> &raquo;</li>
+        
+      <li>Quoting, substitutions, aliases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/content/blob/main/content/quoting_substitution_aliases.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quoting-substitutions-aliases">
+<h1>Quoting, substitutions, aliases<a class="headerlink" href="#quoting-substitutions-aliases" title="Permalink to this headline">¶</a></h1>
+<p>Last time, we focused on interactive things from the command line.
+Now, we build on that some and end up with making our own scripts.</p>
+<div class="section" id="command-line-processing-and-quoting">
+<h2>Command line processing and quoting<a class="headerlink" href="#command-line-processing-and-quoting" title="Permalink to this headline">¶</a></h2>
+<p>So, shell is responsible for interpreting the commands you type. Executing commands
+might seem simple enough, but a lot happens between the time you press RETURN and
+time your computer actually does something.</p>
+<ul class="simple">
+<li><p>When you enter a command line, it is one string.</p></li>
+<li><p>When a program runs, it always takes an array of strings (the
+<code class="docutils literal notranslate"><span class="pre">argv</span></code> in C, <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> in Python, for example).  How do you get
+from one string to an array of strings?  Bash does a lot of
+processing.</p></li>
+<li><p>The simplest way of looking at it is everything separated by spaces,
+but actually there is more: variable substitution, command
+substitution, arithmetic evaluation, history evaluation, etc.</p></li>
+</ul>
+<p>The partial order of operations is (don’t worry about exact order:
+just realize that the shell does a lot of different things in same
+particular order):</p>
+<ul class="simple">
+<li><p>history expansion</p></li>
+<li><p>brace expansion (<code class="docutils literal notranslate"><span class="pre">{1..9}</span></code>)</p></li>
+<li><p>parameter and variable expansion (<code class="docutils literal notranslate"><span class="pre">$VAR</span></code>, <code class="docutils literal notranslate"><span class="pre">${VAR}</span></code>)</p></li>
+<li><p>command substitution (<code class="docutils literal notranslate"><span class="pre">$()</span></code>)</p></li>
+<li><p>arithmetic expansion (<code class="docutils literal notranslate"><span class="pre">$((1+1))</span></code>)</p></li>
+<li><p>word splitting</p></li>
+<li><p>pathname expansion (<code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">[a,b]</span></code>)</p></li>
+<li><p>redirects and pipes</p></li>
+</ul>
+<p>One thing we will start to see is shell quoting.  There are several types
+of quoting (we will learn details of variables later):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Double quotes: disable all other characters except $, &#39;, \</span>
+<span class="n">echo</span> <span class="s2">&quot;$SHELL&quot;</span>
+
+<span class="c1"># Single quotes: disable all special characters</span>
+<span class="n">echo</span> <span class="s1">&#39;$SHELL&#39;</span>
+
+<span class="c1"># backslash disables the special meaning of the next character</span>
+<span class="n">ls</span> <span class="n">name</span>\ <span class="k">with</span>\ <span class="n">space</span>
+</pre></div>
+</div>
+<p>By special characters we mean:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &amp; * ? [ ] ( ) { } = | ^ ; &lt; &gt; ` $ &quot; &#39; \</span>
+</pre></div>
+</div>
+<p>There are different rules for embedding quoting in other quoting.
+Sometimes a command passes through multiple layers and you need to
+really be careful with multiple layers of quoting!  This is advanced,
+but just remember it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo &#39;What&#39;s up? how much did you get $$?&#39;      # wrong, &#39; can not be in between &#39;&#39;
+echo &quot;What&#39;s up? how much did you get $$?&quot;      # wrong, $$ is a variable in this case
+echo &quot;What&#39;s up? how much did you get \$\$?&quot;    # correct
+echo &quot;What&#39;s up? how much did you get &quot;&#39;$$&#39;&quot;?&quot;  # correct
+</pre></div>
+</div>
+<p>At the end of the line <code class="docutils literal notranslate"><span class="pre">\</span></code> removes the new line character, thus the command can continue to a next line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ping</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">&amp;&amp;</span> \
+<span class="n">echo</span> <span class="n">online</span> <span class="o">||</span> \
+<span class="n">echo</span> <span class="n">offline</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="substitute-a-command-output">
+<span id="linux-training-substitute-command-output"></span><h2>Substitute a command output<a class="headerlink" href="#substitute-a-command-output" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Command substitutions execute a command, take its stdout, and  place
+it on the command line in that place.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">$(command)</span></code> or alternatively <code class="docutils literal notranslate"><span class="pre">`command`</span></code>. Could be a command or a
+list of commands with pipes, redirections, grouping, variables
+inside. The <code class="docutils literal notranslate"><span class="pre">$()</span></code> is a modern way, supports nesting, works inside double
+quotes.  To understand what is going on in these, run the inner
+command first.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># &#39;whoami&#39; alternative
+echo $(id -un):$(id -gn)@$(hostname -s)
+
+# save current date to a variable
+today=$(date +%Y-%m-%d)
+
+# create a new file with current timestamp in the name (almost unique filename)
+touch file.$(date +%Y-%m-%d-%H-%M-%S)
+
+# archive current directory content, where new archive name is based on current path and date
+tar czf $(basename $(pwd)).$(date +%Y-%m-%d).tar.gz .
+</pre></div>
+</div>
+<p>This is what makes BASH powerful!</p>
+<p>Note:  <code class="docutils literal notranslate"><span class="pre">$(command</span> <span class="pre">||</span> <span class="pre">exit</span> <span class="pre">1)</span></code> will not have an effect you expect, command is executed in a
+subshell, exiting from inside a subshell, closes the subshell only not the parent script.
+Subshell can not modify its parent shell environment, though can give back exit code or signal it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># this will not work, echo still will be executed
+dir=nonexistent
+echo $(ls -l $dir || exit 1)
+
+# this will not work either, since || evaluates echo&#39;s exit code, not ls
+echo $(ls -l $dir) || exit 1
+
+# this will work, since assignment a comman substitution to a var returns exit
+# code of the executed command
+var=$(ls -l $dir) || exit 1
+echo $var
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-about-redirection-piping-and-process-substitution">
+<h2>More about redirection, piping and process substitution<a class="headerlink" href="#more-about-redirection-piping-and-process-substitution" title="Permalink to this headline">¶</a></h2>
+<p><em>STDIN</em>, <em>STDOUT</em> and <em>STDERR</em>: reserved file descriptors <em>0</em>, <em>1</em> and <em>2</em>. They always there
+whatever process you run. But one can use other file descriptors as well.</p>
+<p><em>File descriptor</em> is a number that uniquely identifies an open file.</p>
+<p><em>/dev/null</em>  file (actually special operating system device) that
+discards all data written to it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># discards STDOUT only</span>
+<span class="n">command</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="c1"># discards both STDOUT and STDERR</span>
+<span class="n">command</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="n">command</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>    <span class="c1"># same as above, old style notation</span>
+
+<span class="c1"># redirects outputs to different files</span>
+<span class="n">command</span> <span class="mi">1</span><span class="o">&gt;</span><span class="n">file</span><span class="o">.</span><span class="n">out</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">file</span><span class="o">.</span><span class="n">err</span>
+
+<span class="c1"># takes STDIN as an input and outputs STDOUT/STDERR to a file</span>
+<span class="n">command</span> <span class="o">&lt;</span> <span class="n">input_file</span> <span class="o">&amp;&gt;</span> <span class="n">output_file</span>
+</pre></div>
+</div>
+<p>Note, that <code class="docutils literal notranslate"><span class="pre">&amp;&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code> will do the same, redirect both STDOUT and STDERR
+to the same place, but the former syntax is preferable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># what happens if 8.8.8.8 is down? How to make the command more robust?
+ping -c 1 8.8.8.8 &gt; /dev/null &amp;&amp; echo online || echo down
+
+# takes a snapshot of the directory list and send it to email, then renames the file
+ls -l &gt; listing &amp;&amp; { mail -s &quot;ls -l $(pwd)&quot; jussi.meikalainen@aalto.fi &lt; listing; mv listing listing.$(date +&quot;%Y-%m-%d-%H-%M&quot;); }
+
+# a few ways to empty a file
+&gt; filename
+cat /dev/null &gt; filename
+
+# read file to a variable
+var=$(&lt; path/to/file)
+
+# extreme case, if you can&#39;t get the program to stop writing to the file...
+ln -s /dev/null filename
+</pre></div>
+</div>
+<p>Pipes are following the same rules with respect to standard output/error. In order to pipe both STDERR and STDOUT <code class="docutils literal notranslate"><span class="pre">|&amp;</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">!</span></code>  preceeds the command, the exit status is the logical negation.</p>
+<p><strong>tee</strong> in case you still want output to a terminal and to a file <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">|</span> <span class="pre">tee</span> <span class="pre">filename</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">exec</span> <span class="pre">&gt;</span> <span class="pre">output.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">exec</span> <span class="pre">2&gt;</span> <span class="pre">errors.txt</span></code> executed in the script will send the output to
+the file, standard output or error output correspondingly. Opening other than standard file
+descriptors: <strong>exec</strong> causes the shell to hold the file descriptor until the shell dies or
+closes it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># open input_file for reading into the file descriptor 3
+exec 3&lt; $input_file
+# while open, any command can operate on the descriptor
+read -n 3 var &lt;&amp;3
+command &lt;&amp;3
+# mind the file offset, one can read a line, or a few chars, if you have read the file
+# to the end, to reset the offset, run another &#39;exec 3&lt; ...&#39;
+# close the descriptor after you are done
+exec 3&gt;&amp;-
+
+# similar for writing
+exec 5&gt; $output_file; command &gt; &amp;5; ...; exec 5&gt;&amp;-
+# or appending (keep in mind that you use &gt;&gt; only to open the file)
+exec 5&gt;&gt; $output_file; command &gt; &amp;5; ...; exec 5&gt;&amp;-
+# or writing and reading
+exec 6&lt;&gt;$file; ... exec 6&lt;&gt;&amp;-
+# or use a name instead of the descriptor numeric value
+exec {out}&gt;$output_file; ... echo something &gt;&amp;$out; ...
+# redirecting descriptor to another one
+exec 3&gt;&amp;1
+</pre></div>
+</div>
+<p>Opening a FD instead of using a file name multiple times may save you some IO. <em>Hint:</em> to monitor the
+file operations (system calls) one may employ <strong>strace -f -c -e trace=write,openat your_script</strong>.</p>
+<p>But what if you need to pass to another program results of two commands at once? Or if command
+accepts file as an argument but not STDIN?</p>
+<p>One can always do this in two steps, run commands and save results to file(s) and then use
+them with the another command. Though BASH helps to make even this part easier (or harder),
+the feature called
+<em>Process Substitution</em>, looks like <code class="docutils literal notranslate"><span class="pre">&lt;(command)</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;(command)</span></code>, no spaces in between
+parentheses and &lt; signs. It emulates a file creation out of <em>command</em> output
+and place it on a command line. The <em>command</em> can be a pipe, pipeline etc.</p>
+<p>The actual file paths substituted are <em>/dev/fd/&lt;n&gt;</em>. The file paths can be passed as an
+argument to the another command or just redirected as usual.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># BASH creates a file that has an output of *command2* and pass it to *command1*</span>
+<span class="c1"># file descriptor is passed as an argument, assuming command1 can handle it</span>
+<span class="n">command1</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span>
+
+<span class="c1"># same but redirected (like: cat &lt; filename)</span>
+<span class="n">command1</span> <span class="o">&lt;</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span>
+
+<span class="c1"># in the same way one can substitute results of several commands or command groups</span>
+<span class="n">command1</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">command3</span> <span class="o">|</span> <span class="n">command4</span><span class="p">;</span> <span class="n">command5</span><span class="p">)</span>
+
+<span class="c1"># example: comparing listings of two directories</span>
+<span class="n">diff</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">ls</span> <span class="n">dir1</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">ls</span> <span class="n">dir2</span><span class="p">)</span>
+
+<span class="c1"># and vice versa, *command1* output is redirected as a file to *command2*</span>
+<span class="n">command1</span> <span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span>
+
+<span class="c1"># essentially, in some cases pipe and process substituion do the same</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">s</span> <span class="o">|</span> <span class="n">cat</span>
+<span class="n">cat</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">ls</span> <span class="o">-</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aliases">
+<h2>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Alias is nothing more than a shortcut to a long command sequence</p></li>
+<li><p>With alias one can redefine an existing command or name a new one</p></li>
+<li><p>Alias will be evaluated only when executed, thus it may have all the expansions and
+substitutions one normally has on the cli</p></li>
+<li><p>They are less flexible than functions which we will discuss next</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># your own listing command</span>
+<span class="n">alias</span> <span class="n">l</span><span class="o">=</span><span class="s1">&#39;ls -lAF&#39;</span>
+
+<span class="c1"># shortcut for checking space usage</span>
+<span class="n">alias</span> <span class="n">space</span><span class="o">=</span><span class="s1">&#39;du -hs .[!.]* * | sort -h&#39;</span>
+
+<span class="c1"># prints in the compact way login:group</span>
+<span class="n">alias</span> <span class="n">me</span><span class="o">=</span><span class="s1">&#39;echo &quot;$(id -un):$(id -gn)&quot;&#39;</span>
+
+<span class="c1"># redefine rm</span>
+<span class="n">alias</span> <span class="n">rm</span><span class="o">=</span><span class="s1">&#39;rm -i&#39;</span>
+<span class="n">alias</span> <span class="n">rm</span><span class="o">=</span><span class="s1">&#39;rm -rf&#39;</span>
+</pre></div>
+</div>
+<p>Aliases go to <em>.bashrc</em> and available later by default (really,
+anywhere they can be read by the shell).</p>
+<p>[Lecturer’s notes: about 40 mins joint hands-on session + break]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Exercise 2.1</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>Define above mentioned <code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">...</span></code> command as an alias (you name it) in <em>~/.bashrc</em>
+once you verify it works. Then <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> and try the new alias. Tip: any path
+that starts with <em>~</em> means the file or directory is in your HOME.</p></li>
+<li><p>Create a directory structure, that has five directories and five subdirs in each directory
+like <code class="docutils literal notranslate"><span class="pre">dir1/subdir1</span></code>, <code class="docutils literal notranslate"><span class="pre">dir1/subdir2</span></code>, … <code class="docutils literal notranslate"><span class="pre">dir5/subdir5</span></code>
+with one command. Tip: use Brace expansions and see <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">...</span></code></p></li>
+<li><p>Use command substitution to create an empty file with the date the in the name, like
+<code class="docutils literal notranslate"><span class="pre">file.YYYY-MM-DD.out</span></code>. Tip: investigate <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">+&quot;...&quot;</span></code> output format.</p></li>
+<li><p>Create a one-liner with <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">echo</span></code>, redirections etc that takes a file path
+and says whether this file/directory exists or not. Redirect STDOUT/STDERR to /dev/null.
+See our <code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">-c</span> <span class="pre">8.8.8.8</span> <span class="pre">...</span></code> as an example.</p></li>
+<li><p>Use any of the earlier created files to compare there modification times with <code class="docutils literal notranslate"><span class="pre">stat</span> <span class="pre">-c</span> <span class="pre">'%y'</span> <span class="pre">filename</span></code>,
+<code class="docutils literal notranslate"><span class="pre">diff</span></code> and the process substitution.</p></li>
+<li><p>(*) Make a one-liner that copies a small dir (small (!), to save time/traffic)
+from your Triton’s $WRKDIR (or any other remote server) and sends confirmation to your
+email with the directory listing attached but use process substitution instead of saving
+directory listing to a file. Tip: use examples in the text.</p></li>
+<li><p>(*) Using pipes and commands <code class="docutils literal notranslate"><span class="pre">echo</span></code>, <code class="docutils literal notranslate"><span class="pre">tr</span></code>, <code class="docutils literal notranslate"><span class="pre">uniq</span></code>, find doubled words out of
+<code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Do</span> <span class="pre">Do</span> <span class="pre">list:</span> <span class="pre">Find</span> <span class="pre">a</span> <span class="pre">a</span> <span class="pre">Doubled</span> <span class="pre">Word.</span></code></p></li>
+<li><p>(*) Pick up <em>/scratch/scip/BASH/windows.txt</em> file and convert it to UNIX format using
+<code class="docutils literal notranslate"><span class="pre">tr</span></code> and redirects only. Tip: remind first session examples.</p></li>
+<li><p>(*) Using <code class="docutils literal notranslate"><span class="pre">find</span></code>, duplicate current directory tree (to some other dir, only tree, no content)</p></li>
+<li><p>(*) Join <em>find</em> and <em>grep</em> power and find all the files in /{usr/,}{bin,sbin} that have ‘#!/bin/bash’ in it</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="variables_functions_environments.html" class="btn btn-neutral float-right" title="Variables, functions, environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="part_two.html" class="btn btn-neutral float-left" title="PART #2. Linux shell scripting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Aalto Science-IT.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

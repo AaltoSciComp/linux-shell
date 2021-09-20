@@ -1,0 +1,533 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Conditionals &mdash; Linux shell tutorial  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Loops" href="loops.html" />
+    <link rel="prev" title="Variables, functions, environment" href="variables_functions_environments.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linux shell tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Lessons</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="part_one.html">PART #1. Linux shell basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="part_two.html">PART #2. Linux shell scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quoting_substitution_aliases.html">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables_functions_environments.html">Variables, functions, environment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conditionals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests">Tests: <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditionals-if-elif-else">Conditionals: if/elif/else</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case">case</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays_inputs_here_documents.html">Arrays, input, Here Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traps_debugging_profiling.html">Traps, debugging, profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel_crontab_perlawksed.html">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About us</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="to_continue.html">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bonus_material.html">Bonus material</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linux shell tutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="part_two.html">PART #2. Linux shell scripting</a> &raquo;</li>
+        
+      <li>Conditionals</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/content/blob/main/content/conditionals.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conditionals">
+<h1>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tests">
+<h2>Tests: <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code><a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">expression</span> <span class="pre">]]</span></code> returns 0=true/success or 1=false/failure depending on the
+evaluation of the conditional <em>expression</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">expression</span> <span class="pre">]]</span></code> is a new upgraded variation on <code class="docutils literal notranslate"><span class="pre">test</span></code> (also known as <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">...</span> <span class="pre">]</span></code>),
+all the earlier examples with single brackets that one can find online will also work
+with double</p></li>
+<li><p>Inside the double brackets it performs tilde expansion, parameter and variable expansion,
+arithmetic expansion, command substitution, process substitution, and quote removal</p></li>
+<li><p>Conditional expressions can be used to test file attributes and perform string and arithmetic
+comparisons</p></li>
+</ul>
+<dl class="simple">
+<dt>Selected examples file attributes and variables testing:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">file</span></code> true if is a file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">file</span></code> true if file exists and readable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">dir</span></code> true if is a directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">file</span></code> true if file/dir/etc exists in any form</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-z</span> <span class="pre">string</span></code> true if the length of string is zero (always used to check that var is not empty)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">string</span></code> true if the length of string is non-zero</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">file1</span> <span class="pre">-nt</span> <span class="pre">file2</span></code> true if <em>file1</em> is newer (modification time)</p></li>
+<li><p>many more others</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># checks that file exists
+[[ -f $file ]] &amp;&amp; echo $file exists || { echo error; exit 1; }
+
+# check that directory does not exist before creating one
+[[ -d $dir ]] || mkdir $dir
+
+# Check if script/function is given an argument
+[[ -z $1 ]] &amp;&amp; { echo no argument; exit 1; }
+</pre></div>
+</div>
+<p>Note that integers have their own construction <code class="docutils literal notranslate"><span class="pre">((</span> <span class="pre">expression</span> <span class="pre">))</span></code> (we come back to this),
+though <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code> will work for them too.  The following are more tests:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> strings or integers are equal  (<code class="docutils literal notranslate"><span class="pre">=</span></code> also works)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> strings or integers are not equal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string1</span> <span class="pre">&lt;</span> <span class="pre">string2</span></code> true if <em>string1</em> sorts before <em>string2</em> lexicographically</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> vice versa, for integers greater/less than</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">=~</span> <span class="pre">pattern</span></code> matches the pattern against the string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>  logical AND, conditions can be combined</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">||</span></code> logical OR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!</span></code> negate the result of the evaluation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code> group conditional expressions</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Find out were we are
+[[ $(pwd) == /some/path ]] ...
+
+# Check, grouping, booleans as a demo
+[[ $(hostname -s) == kosh &amp;&amp; ($(pwd) == $WORK || $(pwd) == $SCRATCH) ]] ...
+
+# note that [[ ]] always require spaces before and after brackets (!)
+</pre></div>
+</div>
+<p>In addition (old school), double brackets inherit several operands to work with integers mainly:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-eq</span></code>, <code class="docutils literal notranslate"><span class="pre">-ne</span></code>, <code class="docutils literal notranslate"><span class="pre">-lt</span></code>, <code class="docutils literal notranslate"><span class="pre">-le</span></code>, <code class="docutils literal notranslate"><span class="pre">-gt</span></code>, <code class="docutils literal notranslate"><span class="pre">-ge</span></code>  equal to, not equal  to,
+less  than, less than or equal to, greater than, or greater than or equal</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Some use cases for [[ ]]
+
+# a popular way to check input arguments, if no input, exit (in functions
+# &#39;return 1&#39;).  Remember, $# is special variable for number of arguments.
+[[ $# -eq 0 ]] &amp;&amp; { echo Usage: $0 arguments; exit 1; }
+
+# if dir exists and is not empty, then do smth
+$d=path/to/dir; [[ -d $d &amp;&amp; $(ls -A $d) ]] &amp;&amp; tar caf ...
+
+# append PATH
+d=/path/to/bin; [[ -d $d &amp;&amp; ! $(echo $PATH|grep $d) ]] &amp;&amp; export PATH+=:$d
+</pre></div>
+</div>
+<p>The matching operator <code class="docutils literal notranslate"><span class="pre">=~</span></code> brings more opportunities, because regular expressions come in play.
+Even more: matched strings in parentheses assigned to <em>${BASH_REMATCH[]}</em> array elements!</p>
+<ul class="simple">
+<li><p>Regular expressions (regexs) are basically a mini-language for
+searching within, matching, and replacing text in strings.</p></li>
+<li><p>They are extremely powerful and basically required knowledge in any
+type of text processing.</p></li>
+<li><p>Yet there is a famous quote by Jamie Zawinski: “Some people, when
+confronted with a problem, think ‘I know, I’ll use regular
+expressions.’ Now they have two problems.”  This doesn’t mean
+regular expressions shouldn’t be used, but used carefully.  When
+writing regexs, start with a small pattern and slowly build it up,
+testing the matching at each phase, or else you will end up with a
+giant thing that doesn’t work and you don’t know why and can’t debug
+it.  There are also online regex testers which help build them.</p></li>
+<li><p>While the basics (below) are the same, there are different forms of
+regexs!  For example, the <code class="docutils literal notranslate"><span class="pre">grep</span></code> program has regular regexs, but
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-E</span></code> has extended.  The difference is mainly in the special
+characters and quoting.  Basically, check the docs for each language
+(Perl, Python, etc) you want to use regexs in.</p></li>
+</ul>
+<p>Selected operators:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> matches any single character</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> the preceding item is optional and will be matched, at most, once</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> the preceding item will be matched zero or more times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> the preceding item will be matched one or more times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N}</span></code> the preceding item is matched exactly N times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N,}</span></code> the preceding item is matched N or more times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{N,M}</span></code> the preceding item is matched at least N times, but not more than M times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[abd]</span></code>, <code class="docutils literal notranslate"><span class="pre">[a-z]</span></code>  a character or a range of characters/integers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code>  beginning of a line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code>  the end of a line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code> grouping items, this what comes to ${BASH_REMATCH[&#64;]}</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># match an email
+email=&#39;jussi.meikalainen@aalto.fi&#39;; regex=&#39;(.*)@(.*)&#39;; [[ &quot;$email&quot; =~ $regex ]]; echo ${BASH_REMATCH[*]}
+
+# a number out of the text
+txt=&#39;Some text with #1278 in it&#39;; regex=&#39;#([0-9]+ )&#39;; [[ &quot;$txt&quot; =~ $regex ]] &amp;&amp; echo ${BASH_REMATCH[1]} || echo do not match
+
+# case insensitive matching
+var1=ABCD, var2=abcd; [[ ${var1,,} =~ ${var2,,} ]] &amp;&amp; ...
+</pre></div>
+</div>
+<p><strong>For case insesitive matching</strong>, alternatively, in general, set <code class="docutils literal notranslate"><span class="pre">shopt</span> <span class="pre">-s</span> <span class="pre">nocasematch</span></code>
+(to disable it back <code class="docutils literal notranslate"><span class="pre">shopt</span> <span class="pre">-u</span> <span class="pre">nocasematch</span></code>)</p>
+</div>
+<div class="section" id="conditionals-if-elif-else">
+<h2>Conditionals: if/elif/else<a class="headerlink" href="#conditionals-if-elif-else" title="Permalink to this headline">¶</a></h2>
+<p>Yes, we have <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span> <span class="pre">&amp;&amp;</span> <span class="pre">...</span> <span class="pre">||</span> <span class="pre">...</span></code> but scripting style is more logical with if/else construction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">;</span> <span class="n">then</span>
+  <span class="n">command1</span>
+<span class="k">elif</span> <span class="n">condition</span><span class="p">;</span> <span class="n">then</span>
+  <span class="n">command2</span>
+<span class="k">else</span>
+  <span class="n">command3</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>At the <em>condition</em> place can be anything what returns an exit code, i.e. <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code>, command/function,
+an arithmetic expression <code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">))</span></code>, or a command substitution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># to compare two input strings/integers
+if [[ &quot;$1&quot; == &quot;$2&quot; ]]
+then
+  echo The strings are the same
+else
+  echo The strings are different
+fi
+
+# checking command output
+if ping -c 1 8.8.8.8 &amp;&gt; /dev/null; then
+  echo Online
+elif ping -c 1 127.0.0.1 &amp;&gt; /dev/null; then
+  echo Local interface is down
+else
+  echo No external connection
+fi
+
+# check input parameters
+if [[ $# == 0 ]]; then
+  echo Usage: $0 input_arg
+  exit 1
+fi
+... the rest of the code
+</pre></div>
+</div>
+<p>Expanding <em>tarit.sh</em> to a script</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+# usage: tarit.sh &lt;dirname&gt;
+
+d=$1
+
+# if dirname is given, we archive it
+if [[ -d $d ]]; then
+  tar caf $(basename $d).$(date +%Y-%m-%d).tar.gz $d
+elif [[ -z $d ]]; then
+  tar caf $(basename $(pwd)).$(date +%Y-%m-%d).tar.gz .
+else
+  echo $d does not exist
+fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="case">
+<h2>case<a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
+<p>Another option to handle flow, instead of nested <em>ifs</em>, is <code class="docutils literal notranslate"><span class="pre">case</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>read -p &quot;Do you want to create a directory (y/n)? &quot; yesno   # expects user input
+case $yesno in
+  y|yes)
+    dir=&#39;dirname&#39;
+    echo Creating a new directory $dir
+    mkdir $dir
+    cd $dir
+    ;;
+  n|no)
+    echo Proceeding in the current dir $(pwd)
+    ;;
+  *)
+    echo Invalid response
+    exit 1
+    ;;
+esac
+# $yesno can be replaced with ${yesno,,} to convert to a lower case on the fly
+</pre></div>
+</div>
+<p><strong>In the example above, we introduce</strong> <code class="docutils literal notranslate"><span class="pre">read</span></code>, a built-in command that reads one line from the standard
+input or file descriptor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">case</span></code> tries to match the variable against each pattern in turn. Understands patterns rules like <code class="docutils literal notranslate"><span class="pre">*,</span> <span class="pre">?,</span> <span class="pre">[],</span> <span class="pre">|</span></code>.</p>
+<p>Here is the <em>case</em> that could be used as an idea for your <em>~/.bashrc</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>host=$(hostname)
+case $host in
+  myworkstation*)
+    export PRINTER=mynearbyprinter
+    # making your promt smiling when exit code is 0 :)
+    PS1=&#39;$(if [[ $? == 0 ]]; then echo &quot;\[\e[32m\]:)&quot;; else echo &quot;\[\e[31m\]:(&quot;; fi)\[\e[0m\] \u@\h \w $ &#39;
+  ;;
+  triton*)
+    [[ -n $WRKDIR ]] &amp;&amp; alias cwd=&quot;cd $WRKDIR&quot; &amp;&amp; cwd
+  ;;
+  kosh*|brute*|force*)
+    PS1=&#39;\u@\h:\w\$&#39;
+    export IGNOREEOF=0
+  ;&amp;
+  *.aalto.fi)
+    kinit
+  ;;
+  *)
+    echo &#39;Where are you?&#39;
+  ;;
+esac
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">;;</span></code> is important, if replaced with <code class="docutils literal notranslate"><span class="pre">;&amp;</span></code>, execution will continue with the command
+associated with the next pattern, without testing it. <code class="docutils literal notranslate"><span class="pre">;;&amp;</span></code> causes the shell to test
+next pattern. The default behaviour with <code class="docutils literal notranslate"><span class="pre">;;</span></code> is to stop matches after first pattern
+has been found.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a file &#39;cx&#39;</span>
+<span class="n">case</span> <span class="s2">&quot;$0&quot;</span> <span class="ow">in</span>
+ <span class="o">*</span><span class="n">cx</span><span class="p">)</span> <span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="s2">&quot;$@&quot;</span> <span class="p">;</span><span class="o">&amp;</span>
+ <span class="o">*</span><span class="n">cw</span><span class="p">)</span> <span class="n">chmod</span> <span class="o">+</span><span class="n">w</span> <span class="s2">&quot;$@&quot;</span> <span class="p">;;</span>
+ <span class="o">*</span><span class="n">c</span><span class="o">-</span><span class="n">w</span><span class="p">)</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">w</span> <span class="s2">&quot;$@&quot;</span> <span class="p">;;</span>
+ <span class="o">*</span><span class="p">)</span> <span class="n">echo</span> <span class="s2">&quot;$0: seems that file name is somewhat different&quot;</span><span class="p">;</span> <span class="n">exit</span> <span class="mi">1</span> <span class="p">;;</span>
+<span class="n">esac</span>
+
+<span class="c1"># chmod +x cx</span>
+<span class="c1"># ln cx cw</span>
+<span class="c1"># ln cx c-w</span>
+<span class="c1"># to make a file executable &#39;cx filename&#39;</span>
+</pre></div>
+</div>
+<p>The following example is useful for Triton users: <a class="reference external" href="https://scicomp.aalto.fi/triton/tut/array.html">array jobs</a>,
+where one handles array subtasks based on its index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Exercise 2.3</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>Re-implement the above mentioned example
+<code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">[[</span> <span class="pre">-d</span> <span class="pre">$d</span> <span class="pre">&amp;&amp;</span> <span class="pre">!</span> <span class="pre">$(echo</span> <span class="pre">$PATH|grep</span> <span class="pre">$d)</span> <span class="pre">]]</span> <span class="pre">...</span></code> with the matching operator <code class="docutils literal notranslate"><span class="pre">=~</span></code></p></li>
+<li><p>Improve the <code class="docutils literal notranslate"><span class="pre">tarit.sh</span></code> script we developed recently:</p>
+<ul>
+<li><p>add check for the number of the given arguments. Hint: <code class="docutils literal notranslate"><span class="pre">$#</span></code> must be zero or one.</p></li>
+<li><p>validate the given path like <em>path/to/file</em>. Hint: <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">$d</span> <span class="pre">=~</span> <span class="pre">regexpr</span> <span class="pre">]]</span></code>,
+the path may have only alphanumeric symbols, dots, underscore and slashes as
+a directory delimiter.</p></li>
+</ul>
+</li>
+<li><p>Expand <code class="docutils literal notranslate"><span class="pre">cx</span></code> script:</p>
+<ul>
+<li><p>check that $&#64; not empty</p></li>
+<li><p>add option for <code class="docutils literal notranslate"><span class="pre">cr</span></code> that would add read rights for all. Hint: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">a+r</span> <span class="pre">...</span></code></p></li>
+</ul>
+</li>
+<li><p>(*) Write a function (add to <em>bin/functions</em>) that validates an IPv4 using
+<code class="docutils literal notranslate"><span class="pre">=~</span></code> matching operator. The function should fail incorrect IPs like 0.1.2.3d
+or 233.204.3.257. The problem should be solved with the regular expression only.
+Use <code class="docutils literal notranslate"><span class="pre">return</span></code> command to exit with the right exit code.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="loops.html" class="btn btn-neutral float-right" title="Loops" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="variables_functions_environments.html" class="btn btn-neutral float-left" title="Variables, functions, environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Aalto Science-IT.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
