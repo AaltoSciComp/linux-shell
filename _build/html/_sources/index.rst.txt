@@ -26,7 +26,7 @@ Credits
 -------
 
 1 credit if completed together with Linux shell basics -course and all 
-exercises completed and sent to us.
+exercises completed and sent to scip@aalto.fi.
 
 
 Schedule
@@ -83,11 +83,32 @@ Based on
 
 
 .. toctree::
-   :caption: Lessons
+   :caption: PART #1. Linux shell basics
    :hidden:
 
-   part_one
-   part_two
+   the_shell
+   starting_commands
+   processes
+   files_and_directories
+   find
+   file_archive_transfer
+   hotkeys
+   files_continue
+   input_output
+   pipelines_grep
+
+.. toctree::
+   :caption: PART #2. Linux shell scripting
+   :hidden:
+
+   quoting_substitution_aliases
+   variables_functions_environments
+   conditionals
+   loops
+   arrays_inputs_here_documents
+   traps_debugging_profiling
+   parallel_crontab_perlawksed
+   references
 
 
 .. toctree::
