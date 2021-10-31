@@ -86,28 +86,28 @@ Based on
    :caption: PART #1. Linux shell basics
    :hidden:
 
-   the_shell
-   starting_commands
+   the-shell
+   starting-commands
    processes
-   files_and_directories
+   files-and-directories
    find
-   file_archive_transfer
+   file-archive-transfer
    hotkeys
-   files_continue
-   input_output
-   pipelines_grep
+   files-continue
+   input-output
+   pipelines-grep
 
 .. toctree::
    :caption: PART #2. Linux shell scripting
    :hidden:
 
-   quoting_substitution_aliases
-   variables_functions_environments
+   quoting-substitution-aliases
+   variables-functions-environments
    conditionals
    loops
-   arrays_inputs_here_documents
-   traps_debugging_profiling
-   parallel_crontab_perlawksed
+   arrays-inputs-here-documents
+   traps-debugging-profiling
+   parallel-crontab-perlawksed
    references
 
 
@@ -122,5 +122,5 @@ Based on
    :caption: Other
    :hidden:
 
-   to_continue
-   bonus_material
+   to-continue
+   bonus-material
