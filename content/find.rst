@@ -56,3 +56,7 @@ workstations only.  This uses a cached database of all files, and
 just searches that database so it is much faster.
 
 **Too many arguments**  error solved with the ``find ... | xargs``
+
+
+.. [#find1] https://alvinalexander.com/unix/edu/examples/find.shtml
+.. [#find2] http://www.softpanorama.org/Tools/Find/index.shtml

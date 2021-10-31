@@ -275,3 +275,6 @@ Even though in most of the cases you can design the code to use conditionals or 
    Tip: http://meinit.nl/convert-active-directory-lastlogon-time-to-unix-readable-time
 
    - Expand it to handle "Got 0 replies" response, i.e. account name not found.
+
+
+.. [#printf] https://wiki.bash-hackers.org/commands/builtin/printf

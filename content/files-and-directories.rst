@@ -118,6 +118,7 @@ created file by default.  So ``umask 027`` means "by default,
 g-w,o-rwx any newly created files".  It's not really changing the
 permissions, just the default the operating system will create with.
 
+
 **Hint:**
 even though file has a read access the top directory must be
 searchable before external user or group will be able to access
@@ -182,3 +183,6 @@ etc (thus works on Triton $WRKDIR).
    use ``setfacl`` to set its permissions so that only you and some
    user/group of your choice would have access to it.
  - (*) create a directory and a subdirectory in it and set their permissions to 700 with one command.
+
+
+.. [#umask] https://www.computerhope.com/unix/uumask.htm

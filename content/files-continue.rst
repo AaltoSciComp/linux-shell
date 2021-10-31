@@ -86,3 +86,6 @@ Utilities: the building blocks of shell
   cat; sort; tr; cut; head; date; tail; wc; grep; uniq; paste; find  # and many others
  
 We catch many of them on the way.
+
+
+.. [#ps1] https://www.ibm.com/developerworks/linux/library/l-tip-prompt/

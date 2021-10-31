@@ -49,3 +49,9 @@ Basic shell operation
   preprocessing, and then runs it.
 - When the command runs, the keyboard (still standard input) goes to
   the process, output (standard output) goes to the screen.
+
+
+
+
+
+.. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html

@@ -112,3 +112,9 @@ happens when you run as ``DEBUG=profile ./script.sh``::
 
 For the larger scripts with loops and functions tracing output with the date stamps and line numbers
 can be summarized. For further discussion please take a look at [#profiling]_
+
+
+
+
+
+.. [#profiling] https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup

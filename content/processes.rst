@@ -137,3 +137,6 @@ Example: ``irssi`` on kosh / lyta
    bash PID.
 
    - (*) get any X Window application (firefox, xterm, etc) to run on Triton / kosh
+
+
+.. [#xming] http://www.straightrunning.com/XmingNotes/

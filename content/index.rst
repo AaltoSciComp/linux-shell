@@ -64,21 +64,10 @@ References
 
 Based on
  - ``man bash`` v4.2 (Triton default version in Feb 2018)
- - Advanced BASH scripting guide [#absguide]_
+ - `Advanced BASH scripting guide <http://tldp.org/LDP/abs/html/index.html>`__
  - UNIX Power Tools, Shelley Powers etc, 3rd ed, O'Reilly
  - common sense and 20+ years Linux experience
  - see also other references in the text
-
-   .. [#absguide] http://tldp.org/LDP/abs/html/index.html
-   .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-   .. [#xming] http://www.straightrunning.com/XmingNotes/
-   .. [#ps1] https://www.ibm.com/developerworks/linux/library/l-tip-prompt/
-   .. [#find1] https://alvinalexander.com/unix/edu/examples/find.shtml
-   .. [#find2] http://www.softpanorama.org/Tools/Find/index.shtml
-   .. [#putty-sshkeys] https://the.earth.li/~sgtatham/putty/0.70/htmldoc/
-   .. [#umask] https://www.computerhope.com/unix/uumask.htm
-   .. [#printf] https://wiki.bash-hackers.org/commands/builtin/printf
-   .. [#profiling] https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup
 
 
 
@@ -108,8 +97,6 @@ Based on
    arrays-inputs-here-documents
    traps-debugging-profiling
    parallel-crontab-perlawksed
-   references
-
 
 .. toctree::
    :caption: About

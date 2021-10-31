@@ -41,3 +41,9 @@ readable by you only)::
  Host triton triton.aalto.fi
      Hostname triton.aalto.fi
      ProxyCommand ssh YOUR_AALTO_LOGIN@kosh.aalto.fi -W %h:%p
+
+
+
+
+
+.. [#putty-sshkeys] https://the.earth.li/~sgtatham/putty/0.70/htmldoc/
