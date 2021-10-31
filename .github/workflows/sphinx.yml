@@ -54,6 +54,8 @@ jobs:
           python -V
           pip list --not-required
           pip list
+
+
       # Build
       - uses: ammaraskar/sphinx-problem-matcher@master
       - name: Build Sphinx docs
@@ -67,6 +69,8 @@ jobs:
           #   https://github.com/sphinx-doc/sphinx/pull/8524
           #   https://github.com/readthedocs/sphinx_rtd_theme/pull/1025
           sed -i 's/url_root="#"/url_root=""/' _build/dirhtml/index.html || true
+
+
       # The following supports building all branches and combining on
       # gh-pages
 
@@ -120,11 +124,13 @@ jobs:
                   rm -r _gh-pages/branch/$brdir/
               fi
           done
+
       # Add the .nojekyll file
       - name: nojekyll
         if: ${{ github.event_name == 'push' }}
         run: |
           touch _gh-pages/.nojekyll
+
       # Deploy
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
