@@ -257,9 +257,15 @@ Aliases
 Aliases go to *.bashrc* and available later by default (really,
 anywhere they can be read by the shell).
 
+
+
+Exercise 2.1
+------------
+
 [Lecturer's notes: about 40 mins joint hands-on session + break]
 
-:Exercise 2.1:
+.. exercise::
+
  - Define above mentioned ``ping ...`` command as an alias (you name it) in *~/.bashrc*
    once you verify it works. Then ``source ~/.bashrc`` and try the new alias. Tip: any path
    that starts with *~* means the file or directory is in your HOME.

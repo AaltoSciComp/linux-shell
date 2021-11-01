@@ -268,7 +268,11 @@ The following example is useful for Triton users: `array jobs
 where one handles array subtasks based on its index.
  
 
-:Exercise 2.3:
+Exercise 2.3
+--------------
+
+.. exercise::
+
  - Re-implement the above mentioned example
    ``... [[ -d $d && ! $(echo $PATH|grep $d) ]] ...`` with the matching operator ``=~``
  - Improve the ``tarit.sh`` script we developed recently:

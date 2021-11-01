@@ -173,7 +173,11 @@ Same can be adapted to copy locally, to a usb drive or alike.
  done
 
 
-:Exercise 2.5:
+Exercise 2.5
+------------
+
+.. exercise::
+
  - make a script/function that produces an array of random numbers, make sure that numbers
    are unique. Print the array nicely using ``printf`` for formating.
  
@@ -400,7 +404,11 @@ Let us use *cx* script as a demo:
 
 
 
-:Exercise 2.6:
+Exercise 2.6
+------------
+
+.. exercise::
+
  - Using the latest *tarit.sh* (see lecture notes) version as an example,
    expand above *cx* script to
    accept STDIN, like ``command | cx [options]``, where ``command`` produces a list of

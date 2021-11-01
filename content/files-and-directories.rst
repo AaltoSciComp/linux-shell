@@ -156,9 +156,13 @@ etc (thus works on Triton $WRKDIR).
 
 
 
-[Lecture notes: hands-on ~30 mins till the end of this session]
+Exercise 1.1.2
+--------------
 
-:Exercise 1.1.2:
+Lecture notes: hands-on ~30 mins till the end of this session
+
+.. exercise::
+
  - mkdir in your ``$HOME`` (or ``$WRKDIR`` if on Triton), cd there and ``touch`` a file.
    Rename it. Make a copy and then remove the original.  What does
    ``touch`` do?

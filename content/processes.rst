@@ -116,9 +116,14 @@ connect, and resume right where they left off.
 Example: ``irssi`` on kosh / lyta
 
 
+
+Exercises 1.1.1
+---------------
+
 [Lecture notes: that should be a first half, then joint hands-on/break ~30 mins]
 
-:Exercise 1.1.1:
+.. exercise::
+
  - for Aalto users: set your SHELL to BASH if you have not yet done so: ``chsh -s /bin/bash`` on kosh
  - find out with *man* how to use *top* / *pstree* / *ps* to list all the running processes that belong to you
    Tip: *top* has both command line options and hot keys.

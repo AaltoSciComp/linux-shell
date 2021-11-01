@@ -214,9 +214,13 @@ To address special characters::
  var=${var//$'\t'/ }
 
 
+Exercise 2.2
+------------
+
 [Lecturer's note: ~20 minutes for the hands-on exercises. Solution examples can be given at very end.]
 
-:Exercise 2.2:
+.. exercise::
+
  - Expand ``lcd()`` function to have WRKDIR as a default directory in case function is invoked
    without any input parameter.
  - Expand the Exersice 2.1's ``ls ... && echo .. || echo`` example, make a function that check any

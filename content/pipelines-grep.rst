@@ -81,7 +81,11 @@ at ``man grep``.  Some examples:
  grep "<[Hh][12]>" file.html
 
 
-:Exercise 1.2.3:
+Exercise 1.2.3
+--------------
+
+.. exercise::
+
  - make a pipe that counts number of files/directories (including dot files) in your directory
  - grep directories out of ``ls -l``
  - grep all but blank lines in triton:/etc/bashrc

@@ -61,7 +61,11 @@ Other quick ways to add something to a file (no need for an editor)
 Try: add above mentioned ``export PS1`` to *.bashrc*. Remember ``source .bashrc`` to enable changes
 
 
-:Exercise 1.2.2:
+Exercise 1.2.2
+--------------
+
+.. exercise::
+
  - link *.bash_profile* to *.bashrc*. Tip: see ``ln`` command from the previous session.
  - open *~/.bashrc* for eiditng and add there CDPATH example from above, customize
    it for your needs and test. Tip: remember ``source ~/.bashrc``.

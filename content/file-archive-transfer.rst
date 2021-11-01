@@ -59,9 +59,14 @@ Several use cases::
  cd $WRKDIR
  tar czf - path/to/dir | ssh kosh.aalto.fi 'cat > path/to/archive/dir/archive_file.tar.gz'
 
+
+Exercise 1.2.1
+--------------
+
 [Lecture notes: this session has three theory+excersise hands-ons, roughly 40+20 minutes each]
 
-:Exercise 1.2.1:
+.. exercise::
+
  - Find with ``find`` all the files in your $HOME that are readable or writable by everyone
 
    - (*) apply ``chmod o-rwx`` to all recently found files with ``find``
