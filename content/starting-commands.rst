@@ -28,9 +28,9 @@ Built-in and external commands
 
 There are two types of commands:
 
-- shell built-in: ``cd``, ``pwd``, ``echo``, ``test``, etc.
+- shell built-in: ``cd``, ``pwd``, ``echo``, ``alias``, ``bg``, ``set``, ``umask`` etc.
 - external: ``ls``, ``date``, ``less``, ``lpr``, ``cat``, etc.
-- some can be both: e.g. ``test``.  Options not always the same!
+- some can be both: e.g. ``echo``.  Options not always the same!
 - For the most part, these behave similarly, which is a good thing!
   You don't have to tell which is which.
 
