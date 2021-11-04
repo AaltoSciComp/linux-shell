@@ -1,6 +1,15 @@
 Starting out
 ============
 
+Starter
+-------
+
+```
+du -hs * .[!.]* | sort -h
+tar czf - $d | ssh kosh.aalto.fi 'cat > public_html/$d.tar.gz && chmod a+r $d.tar.gz'
+find $d -type f \( ! -perm /g+w  -o -perm /o+w \) -exec chmod u+rwX,g+rwX,o-wx {} \;
+```
+
 Getting help in terminal
 ------------------------
 
