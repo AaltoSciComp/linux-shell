@@ -5,13 +5,19 @@ First touch: getting a BASH shell
 ---------------------------------
 
 Set yourself up with a BASH shell.  Connect to a server or open on your own computer.
-Examples and demos given during the lecture are done on Triton, though should work
-on all other Linux installations.
+Examples and demos given during the lecture are done on a native Linux BASH on either Ubuntu or CentOS,
+though should work on all other Linux installations and Git BASH on Windows.
 
-- Linux and Mac users: just open a terminal window. If you wish you can login
-  to Triton or any other `Aalto Linux server <https://scicomp.aalto.fi/aalto/remoteaccess.html>`__.
-- Windows users: install PuTTY [#putty]_ then *SSH* to any interactive server
-  at Aalto or your department.
+- Linux and Mac users: just open a terminal window
+
+    - Ubuntu users hint: Ctrl + Alt +t
+  
+- Windows users:
+
+    - Git BASH [#gitbash]_
+    - install PuTTY [#putty]_ then *SSH* to any Linux machine. For aalto users [#aaltolinuxservers]_.
+    - (optional) VDI if such service available
+    - (optional) Windows Subsystem for Linux (WSL 2)
 
 
 About the Linux Shell
@@ -54,4 +60,6 @@ Basic shell operation
 
 
 
+.. [#aaltolinuxservers] https://www.aalto.fi/en/services/linux-shell-servers-at-aalto
+.. [#gitbash] https://gitforwindows.org/
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
