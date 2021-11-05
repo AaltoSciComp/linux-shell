@@ -11,18 +11,6 @@ Starter
   find $d -type f \( ! -perm /g+w  -o -perm /o+w \) -exec chmod u+rwX,g+rwX,o-wx {} \;
 
 
-Getting help in terminal
-------------------------
-
-Before you Google for the command examples, try::
-
-  man command_name
-
-Your best friend ever -- ``man`` -- collection of manuals. Type
-*/search_word* for searching through the man page.  But... if it's a
-builtin, you need to use ``help``.
-
-
 Built-in and external commands
 ------------------------------
 
@@ -40,3 +28,28 @@ There are two types of commands:
 
 **Disable built-in command** ``enable -n echo``, after this */usr/bin/echo*
 becomes a default instead of built-in *echo*
+
+
+Getting help in terminal
+------------------------
+
+Before you Google for the command examples, try::
+
+  man command_name
+
+Your best friend ever -- ``man`` -- collection of manuals. Type
+*/search_word* for searching through the man page.  But... if it's a
+builtin, you need to use ``help``.
+
+
+Who/where am I
+--------
+
+You can find info about your user (try them right away)::
+
+  id  -or- whoami
+  echo $SHELL
+  hostnamectl
+  pwd
+
+For Aalto users: is your default shell a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
