@@ -7,11 +7,11 @@ What's a UNIX process?
 - All programs are a process: process is a program in action.
 - Processes have:
 
-  - Process ID (integer)
+  - Process ID or PID (integer)
   - Name (command being run)
-  - Command line arguments
-  - input and output: ``stdin`` (input, like from keyboard),
-    ``stdout`` (output, like to screen), ``stderr`` (like stdout)
+  - Command line arguments/options
+  - input and output: ``stdin`` (input, like from keyboard, another program, another device),
+    ``stdout`` (output, like to screen, another program, file, device), ``stderr`` (like stdout but for errors)
   - Return code (integer) when complete
   - Working directory
   - environment variables: key-values which get inherited across processes.
@@ -20,26 +20,17 @@ What's a UNIX process?
 
 Process listing commands (feel free to try, but we play more with them later)::
 
+  ps auxw
   top              # (q to quit)
   htop             # (q to quit)
   pstree
   pstree $USER
   pstree -pau $USER
-  ps auxw
-
-You can find info about your user (try them right away)::
-
-  id
-  echo $SHELL
-
-Is your default shell is a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
 
 Another way to find out what SHELL you are running::
 
   ps -p $$
 
-Where am I: ``pwd`` (this shows the first piece of process
-information: current directory)
 
 Working with processes
 ----------------------
