@@ -115,24 +115,23 @@ Exercises 1.1.1
 
 .. exercise::
 
- - for Aalto users: set your SHELL to BASH if you have not yet done so: ``chsh -s /bin/bash`` on kosh
- - find out with *man* how to use *top* / *pstree* / *ps* to list all the running processes that belong to you
+ - Find out which shell you are running, your user name, hostname, system name. For Aalto users: set
+   your SHELL to BASH if you have not yet done so: ``chsh -s /bin/bash`` on kosh
+ - Find out with *man* how to use *top* / *ps* to list all the running processes that belong to you
    Tip: *top* has both command line options and hot keys.
-
-   - (*) see ``man ps`` and find out how to list a processes tree with ps, both
-     all processes and only your own (but all your processes, associated with all terminals)
-
- - with pgrep list all bash and then zsh sessions on kosh or triton
- - log in to triton/kosh and run ``man ps``, send it to background, and ``logout``, then
-   log in again. Is it still there? Play with the ``screen``, run a session , then detach it
-   and log out, then log in back and get your original screen session back.
- - run ``man htop``, send it to backround, and then kill it with ``kill``. Tip: one can
+ - Find your shell session's PID, list the processes tree of all child processes that belong to
+   your current session, with the command line, PID, user
+ - With pgrep list all bash processes, if you have SSH access, try both locally, and on a remote Linux server
+ - Run ``man ps``, send it to the background, and return back to the foreground``. Tip: quite ``man`` with 'q'.  
+ - Run ``man htop``, send it to backround, and then kill it with ``kill``. Tip: one can
    do it by background job number or by PID.
- - Imagine a use case: your current ssh session got stuck and does not response. Open another
+ - (*) Run ``screen`` session. Detach, close the seesion, open again and attach 'screen' back. Exit 'screen'.
+ - (*) Find out how to list a processes tree with ``ps``, both
+     all processes and only your own (but all your processes, associated with all terminals)
+ - (*) Try a use case: your current ssh session got stuck and does not response. Open another
    ssh session to the same remote host and kill the first one. Tip: ``echo $$`` gives you current
    bash PID.
-
-   - (*) get any X Window application (firefox, xterm, etc) to run on Triton / kosh
+ - (*) Get any X Window application (firefox, xterm, etc) to run on a remote Linux machine
 
 
 .. [#xming] http://www.straightrunning.com/XmingNotes/
