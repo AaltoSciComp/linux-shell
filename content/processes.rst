@@ -127,7 +127,7 @@ Exercises 1.1.1
    do it by background job number or by PID.
  - (*) Run ``screen`` session. Detach, close the seesion, open again and attach 'screen' back. Exit 'screen'.
  - (*) Find out how to list a processes tree with ``ps``, both
-     all processes and only your own (but all your processes, associated with all terminals)
+   all processes and only your own (but all your processes, associated with all terminals)
  - (*) Try a use case: your current ssh session got stuck and does not response. Open another
    ssh session to the same remote host and kill the first one. Tip: ``echo $$`` gives you current
    bash PID.
