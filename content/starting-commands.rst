@@ -64,3 +64,5 @@ The ones we use in this tutorial, subjective::
   pstree, htop, du, cd, ls, mkdir, touch, ln, rm, cp, mv, mkdir, find, rsync, tar, scp, ssh,
   alias, set, umask, export, date, clear, head, tail, wc, grep, sort, uniq, tr, diff, killall,
   gzip, nano, xargs, chown, chmod, su, sudo, sleep, read, type, file, ping, ...
+
+Plus shell programming language constructs adn control operators. 
