@@ -44,7 +44,7 @@ There are a variety of commands to manipulate files/directories::
  
 For file/directory meta information or content type::
 
- ls, stat, file
+ ls, stat, file, type -a
 
 Note that ``cd`` is a shell builtin which change's the shell's own
 working directory.  This is the base from which all other commands
