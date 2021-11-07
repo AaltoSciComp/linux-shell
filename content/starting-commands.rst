@@ -43,7 +43,7 @@ builtin, you need to use ``help``.
 
 
 Who/where am I
---------
+--------------
 
 You can find info about your user (try them right away)::
 
@@ -53,3 +53,14 @@ You can find info about your user (try them right away)::
   pwd
 
 For Aalto users: is your default shell a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
+
+
+The most common commands
+------------------------
+
+The ones we use in this tutorial, subjective::
+
+  man, cd, pwd, echo, whoami, id, hostname, bg, fg, jobs, cat, less, ps, kill, top, pgrep,
+  pstree, htop, du, cd, ls, mkdir, touch, ln, rm, cp, mv, mkdir, find, rsync, tar, scp, ssh,
+  alias, set, umask, export, date, clear, head, tail, wc, grep, sort, uniq, tr, diff, killall,
+  gzip, nano, xargs, chown, chmod, su, sudo, sleep, read, type, file, ping, ...
