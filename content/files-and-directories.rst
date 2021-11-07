@@ -159,22 +159,19 @@ etc (thus works on Triton $WRKDIR).
 Exercise 1.1.2
 --------------
 
-Lecture notes: hands-on ~30 mins till the end of this session
-
 .. exercise::
 
- - mkdir in your ``$HOME`` (or ``$WRKDIR`` if on Triton), cd there and ``touch`` a file.
-   Rename it. Make a copy and then remove the original.  What does
-   ``touch`` do?
+ - mkdir in the current direcotory, cd there and ``touch`` a file.
+   Rename it. Make a copy and then remove the original.  What does ``touch`` do?
  - list all files in /usr/bin and /usr/sbin that start with non-letter characters with
    one ``ls`` command
- - (*) list with ``ls`` dot files/directories only (by default it
+ - list with ``ls`` dot files/directories only (by default it
    lists all files/directories but not those that begin with ``.``).
    "dotfiles" are a convention where filenames that begin with ``.``
    such as ``.bashrc`` are considered "hidden".
  - Explore ``stat file`` output. What metadata do you find?  Try
-   to stat files of different types (regular file, directory, link,
-   special device in /dev, named pipe)
+   to stat files of different types (a regular file, directory, link,
+   special device in /dev)
  - create a directory, use ``chmod`` to allow user and any group members
    full access and no access for others
  - (*) change that directory group ownership with ``chown`` or ``chgrp`` (any group that you
@@ -183,7 +180,7 @@ Lecture notes: hands-on ~30 mins till the end of this session
    have a private working space for your group. Tip: see groups that you are a member of ``id -Gn``
  - ``ls -ld`` tells you that directory has permissions ``rwxr-Sr--``. Do group members have
    access there?
- - create a directory (in WRKDIR if on Triton and in /tmp if on any other server),
+ - (*) create a directory (in /tmp if you are on a server with ),
    use ``setfacl`` to set its permissions so that only you and some
    user/group of your choice would have access to it.
  - (*) create a directory and a subdirectory in it and set their permissions to 700 with one command.
