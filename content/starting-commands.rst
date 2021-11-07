@@ -65,4 +65,12 @@ The ones we use in this tutorial, subjective::
   alias, set, umask, export, date, clear, head, tail, wc, grep, sort, uniq, tr, diff, killall,
   gzip, nano, xargs, chown, chmod, su, sudo, sleep, read, type, file, ping, ...
 
-Plus shell programming language constructs adn control operators. 
+Plus shell programming language constructs adn control operators.
+
+File viewing / editing
+----------------------
+
+::
+ 
+  less filename
+  nano filename  # to exit Ctrl-x 
