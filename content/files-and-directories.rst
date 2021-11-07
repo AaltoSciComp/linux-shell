@@ -14,7 +14,7 @@ Path can be absolute, starts with '/' or relative, that is related to the curren
 your current directory (i.e. *pwd*), but there are many options::
 
  # list directory content
- ls /scratch/work
+ ls /usr/bin
 
  # list directory files including dot files (i.e. hidden ones)
  ls -A ~/directory1
@@ -30,7 +30,7 @@ For the quotation::
 
  '', "", \
 
-Quotation matters `` "$USER"`` vs ``echo '$USER'``
+Quotation matters ``ls 'file name'`` vs ``ls file name`` or ``echo "$USER"`` vs ``echo '$USER'``
 
 
 BASH first expand the expanssions and substitute the wildcards, and then
