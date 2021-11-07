@@ -111,8 +111,6 @@ Example: ``irssi`` on kosh / lyta
 Exercises 1.1.1
 ---------------
 
-[Lecture notes: that should be a first half, then joint hands-on/break ~30 mins]
-
 .. exercise::
 
  - Find out which shell you are running, your user name, hostname, system name. For Aalto users: set
@@ -122,13 +120,13 @@ Exercises 1.1.1
  - Find your shell session's PID, list the processes tree of all child processes that belong to
    your current session, with the command line, PID, user
  - With pgrep list all bash processes, if you have SSH access, try both locally, and on a remote Linux server
- - Run ``man ps``, send it to the background, and return back to the foreground``. Tip: quite ``man`` with 'q'.  
- - Run ``man htop``, send it to backround, and then kill it with ``kill``. Tip: one can
+ - Run ``nano filename``, send it to the background, and return back to the foreground``. Tip: quite ``nano` with ``Ctrl-x``.  
+ - Run ``man htop``, send it to the backround, and then kill it with ``kill``. Tip: one can
    do it by background job number or by PID.
  - (*) Run ``screen`` session. Detach, close the seesion, open again and attach 'screen' back. Exit 'screen'.
  - (*) Find out how to list a processes tree with ``ps``, both
    all processes and only your own (but all your processes, associated with all terminals)
- - (*) Try a use case: your current ssh session got stuck and does not response. Open another
+ - (*) Try a use case: your current ssh session to a remote host "got stuck" and does not response. Open another
    ssh session to the same remote host and kill the first one. Tip: ``echo $$`` gives you current
    bash PID.
  - (*) Get any X Window application (firefox, xterm, etc) to run on a remote Linux machine
