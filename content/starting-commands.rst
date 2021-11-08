@@ -55,6 +55,15 @@ You can find info about your user (try them right away)::
 For Aalto users: is your default shell a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
 
 
+File viewing / editing
+----------------------
+
+::
+ 
+  less filename
+  nano filename  # to exit Ctrl-x
+
+
 The most common commands
 ------------------------
 
@@ -67,10 +76,5 @@ The ones we use in this tutorial, subjective::
 
 Plus shell programming language constructs adn control operators.
 
-File viewing / editing
-----------------------
-
-::
- 
-  less filename
-  nano filename  # to exit Ctrl-x 
+Important remark: not all of the external commands are available on all the systems. Even Linux
+distribution bundles may differ not speaking of the macOS setup and Window packages.
