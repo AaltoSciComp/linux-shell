@@ -78,7 +78,7 @@ Kill a foreground job: Ctrl-c
 
 **Hint:** For running X Window apps while you logged in from other
 Linux / MacOS make sure you use ``ssh -X ...`` to log in. For Windows users,
-you need to install Xming [#xming]_ on your workstation.
+you need to install VcXsrv Windows X Server [#vcxsrv]_ on your workstation.
 
 **Hint:** For immediate job-state change notifications, use ``set notify``. To automatically
 stop background processes if they try writing to the screen ``stty tostop``
@@ -132,4 +132,4 @@ Exercises 1.1.1
  - (*) Get any X Window application (firefox, xterm, etc) to run on a remote Linux machine
 
 
-.. [#xming] http://www.straightrunning.com/XmingNotes/
+.. [#vcxsrv] https://sourceforge.net/projects/vcxsrv/
