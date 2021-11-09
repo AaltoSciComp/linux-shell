@@ -59,4 +59,4 @@ Basic shell operation
 
 .. [#gitbash] https://gitforwindows.org/
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-.. [#aaltolinuxservers] https://www.aalto.fi/en/services/linux-shell-servers-at-aalto
+.. [#aaltolinuxservers] https://scicomp.aalto.fi/aalto/remoteaccess/
