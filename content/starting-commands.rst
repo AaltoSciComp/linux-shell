@@ -51,10 +51,14 @@ Try them right away::
   echo $SHELL
   uname -a (-or- hostnamectl if available)
   pwd
-  ls
+  ls -lA
+  cd
   date
-  grep
-  uptime
+  grep searchword filename
+  cat filename
+  
+In combination with opeators *>* and *|* serves, plus text editor and a viewer
+like *less*, you should feel yourself safe already now.
 
 For Aalto users: is your default shell a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
 
