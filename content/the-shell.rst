@@ -57,9 +57,6 @@ Basic shell operation
   the process, output (standard output) goes to the screen.
 
 
-
-
-
-.. [#aaltolinuxservers] https://www.aalto.fi/en/services/linux-shell-servers-at-aalto
 .. [#gitbash] https://gitforwindows.org/
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+.. [#aaltolinuxservers] https://www.aalto.fi/en/services/linux-shell-servers-at-aalto
