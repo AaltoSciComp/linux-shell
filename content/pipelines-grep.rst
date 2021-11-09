@@ -81,7 +81,7 @@ at ``man grep``.  Some examples:
  grep "<[Hh][12]>" file.html
 
 
-Exercise 1.2.3
+Exercise 1.5
 --------------
 
 .. exercise::
