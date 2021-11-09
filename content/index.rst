@@ -22,13 +22,6 @@ Who is the course for?
 - Part #2 for people with intermediate/advanced level of Linux/Mac shell
 
 
-Credits
--------
-
-1 credit if completed together with Linux shell basics -course and all 
-exercises completed and sent to scip@aalto.fi.
-
-
 Schedule
 --------
 
@@ -38,8 +31,8 @@ Ongoing. Optional lectures on average once per year with following timetable:
    :widths: auto
    :delim: ;
 
-   Linux Shell Basics ; 2 sessions x 2h
-   Linux Shell Scripting ; 4 sessions x 3h, session rough schedule 2x1h25m with 10m break in between.
+   Linux Shell Basics ; 3 sessions x 3h
+   Linux Shell Scripting ; 4 sessions x 3h
 
 
 
