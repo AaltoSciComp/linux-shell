@@ -10,7 +10,7 @@ though should work on all other Linux installations and Git BASH on Windows.
 
 - Linux and Mac users: just open a terminal window
 
-    - Ubuntu users hint: Ctrl + Alt +t
+    - Ubuntu users hint: Ctrl + Alt + t
   
 - Windows users:
 
