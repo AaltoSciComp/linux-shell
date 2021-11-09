@@ -108,8 +108,8 @@ Example: ``irssi`` on kosh / lyta
 
 
 
-Exercises 1.1.1
----------------
+Exercises 1.1
+-------------
 
 .. exercise::
 
