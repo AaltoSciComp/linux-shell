@@ -62,9 +62,9 @@ Basic shell operation
   the process, output (standard output) goes to the screen.
 
 
-.. [#gitbash] https://gitforwindows.org/
-.. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 .. [#aaltoremoteaccess] https://scicomp.aalto.fi/aalto/remoteaccess/
+.. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+.. [#gitbash] https://gitforwindows.org/
 .. [#ubuntuwindows] https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6
 .. [#cygwin] https://www.cygwin.com/
 
