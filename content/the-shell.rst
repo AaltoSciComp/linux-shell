@@ -14,10 +14,11 @@ though should work on all other Linux installations and Git BASH on Windows.
   
 - Windows users:
 
-    - Git BASH [#gitbash]_
-    - install PuTTY [#putty]_ then *SSH* to any Linux machine. For aalto users [#aaltolinuxservers]_.
-    - (optional) VDI if such service available
+    - (Priority #1) install PuTTY [#putty]_ then *SSH* to any Linux machine. For aalto users [#aaltoremoteaccess]_.
+    - (For easy testing) Git BASH [#gitbash]_  // Misses man pages, some utilities
+    - (Best if you have such) VDI if such service available. Aalto user, see Remote desktop at [#aaltoremoteaccess]_.
     - (optional) Windows Subsystem for Linux (WSL 2)
+    - (FIXME: untested yet) Ubuntu on Windows [#ubuntuwindows]_
 
 
 About the Linux Shell
@@ -59,4 +60,6 @@ Basic shell operation
 
 .. [#gitbash] https://gitforwindows.org/
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-.. [#aaltolinuxservers] https://scicomp.aalto.fi/aalto/remoteaccess/
+.. [#aaltoremoteaccess] https://scicomp.aalto.fi/aalto/remoteaccess/
+.. [#ubuntuwindows] https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6
+
