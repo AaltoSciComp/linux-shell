@@ -66,5 +66,5 @@ Basic shell operation
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 .. [#aaltoremoteaccess] https://scicomp.aalto.fi/aalto/remoteaccess/
 .. [#ubuntuwindows] https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6
-.. [#cygwin]_ https://www.cygwin.com/
+.. [#cygwin] https://www.cygwin.com/
 
