@@ -38,8 +38,8 @@ Before you Google for the command examples, try::
   man command_name
 
 Your best friend ever -- ``man`` -- collection of manuals. Type
-*/search_word* for searching through the man page.  But... if it's a
-builtin, you need to use ``help``.
+*/search_word* for searching through the man page and *q* for the exit.
+But... if it's a builtin, you need to use ``help``.
 
 
 Who/where am I
@@ -60,8 +60,8 @@ File viewing / editing
 
 ::
  
-  less filename
-  nano filename  # to exit Ctrl-x
+  less filename  # 'q' to exit
+  nano filename  # Ctrl-x to exit
 
 
 The most common commands
@@ -77,4 +77,4 @@ The ones we use in this tutorial, subjective::
 Plus shell programming language constructs adn control operators.
 
 Important remark: not all of the external commands are available on all the systems. Even Linux
-distribution bundles may differ not speaking of the macOS setup and Window packages.
+distribution bundles may differ not speaking of the macOS setup and MS Windows packages.
