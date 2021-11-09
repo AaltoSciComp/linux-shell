@@ -80,4 +80,4 @@ Exercise 1.2.1
    - (*) Try ssh+tar combo to make transfer and archive on the fly.
 
 
-..[#aaltoremotemount] https://scicomp.aalto.fi/aalto/remoteaccess/#remote-mounting-of-network-filesystems
+.. [#aaltoremotemount] https://scicomp.aalto.fi/aalto/remoteaccess/#remote-mounting-of-network-filesystems
