@@ -14,11 +14,14 @@ though should work on all other Linux installations and Git BASH on Windows.
   
 - Windows users:
 
-    - (Priority #1) install PuTTY [#putty]_ then *SSH* to any Linux machine. For aalto users [#aaltoremoteaccess]_.
+    - (Priority #1) SSH to a remote native Linux installation. For aalto users [#aaltoremoteaccess]_.
+
+      - Use built-in SSH client: open a Command Prompt (cmd) and launch a command 'ssh loginname@remote.server.name'
+      - If no built-in client, install PuTTY [#putty]_.
+
     - (For easy testing) Git BASH [#gitbash]_  // Misses man pages, some utilities
-    - (Best if you have such) VDI if such service available. Aalto user, see Remote desktop at [#aaltoremoteaccess]_.
-    - (optional) Windows Subsystem for Linux (WSL 2)
-    - (FIXME: untested yet) Ubuntu on Windows [#ubuntuwindows]_
+    - (Optional) VDI if such service available. Aalto user, see Remote desktop at [#aaltoremoteaccess]_.
+    - (Optional) Windows Subsystem for Linux (WSL 2) and  Ubuntu on Windows [#ubuntuwindows]_
 
 
 About the Linux Shell
