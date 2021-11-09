@@ -19,9 +19,10 @@ though should work on all other Linux installations and Git BASH on Windows.
       - Use built-in SSH client: open a Command Prompt (cmd) and launch a command 'ssh loginname@remote.server.name'
       - If no built-in client, install PuTTY [#putty]_.
 
-    - (For easy testing) Git BASH [#gitbash]_  // Misses man pages, some utilities
-    - (Optional) VDI if such service available. Aalto user, see Remote desktop at [#aaltoremoteaccess]_.
-    - (Optional) Windows Subsystem for Linux (WSL 2) and  Ubuntu on Windows [#ubuntuwindows]_
+    - (For easy testing) Git BASH [#gitbash]_  // Misses man pages, some utilities.
+    - -or- VDI if such service available. Aalto user, see Remote desktop at [#aaltoremoteaccess]_.
+    - -or- Windows Subsystem for Linux (WSL 2) and Ubuntu on Windows [#ubuntuwindows]_.
+    - -or- Cygwin [#cygwin]_.
 
 
 About the Linux Shell
@@ -65,4 +66,5 @@ Basic shell operation
 .. [#putty] https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 .. [#aaltoremoteaccess] https://scicomp.aalto.fi/aalto/remoteaccess/
 .. [#ubuntuwindows] https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6
+.. [#cygwin]_ https://www.cygwin.com/
 
