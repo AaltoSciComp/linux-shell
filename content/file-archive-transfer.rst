@@ -37,33 +37,32 @@ Individual files can be compressed directly, e.g. with ``gzip``::
 
 Transferring files (+archiving on the fly)
 ------------------------------------------
-For Triton users the ability to transfer files to/from Triton is essential.
-Same applicable to file transfer between your home workstation and kosh etc.
+As an Aalto user you may use remote directories [#aaltoremotemount]_.
+Here we cover general use case, transferring from the command line.
 
-Several use cases::
+For transferring single files or directories there is *scp*, though
+for FTP like functionality there is SFTP.
 
- # transferring a file from your HOME on kosh to your home worstaion
- sftp AALTO_LOGIN@kosh.aalto.fi:file_to_copy
+::
+
+ # transferring a file from the remote server to the current directory
+ sftp LOGIN@remote.server.fi:/path/to/file_to_copy .
  
- # transferring files from Triton to your Aalto workstation
- sftp triton.aalto.fi:/scratch/work/LOGIN_NAME/some/files/* path/to/copy/to
+ # transferring files from your workstation to  remote server
+ sftp path/to/file_to_copy LOGIN@remote.server.fi:/path/to/destination/directory
 
-(*) Another use case, copying to Triton, or making a directory backup with ``rsync``::
+Another use case, making a directory backup with ``rsync``::
 
- rsync -urlptDxv --chmod=Dg+s somefile triton.aalto.fi:/scratch/work/LOGIN_NAME  # copy a file to $WRKDIR
- rsync -urlptDxv --chmod=Dg+s dir1/ triton.aalto.fi:/scratch/work/LOGINNAME/dir1/  # sync two directories
+ # sync two directories
+ rsync -vauW path/to/dir1/ LOGIN@remote.server.fi:/path/to/destination/dir1
 
-(*) Transferring and archiving your Triton data on the fly to some other place::
+(*) Transferring and archiving your data on the fly to some other place::
 
- # login to Triton
- cd $WRKDIR
- tar czf - path/to/dir | ssh kosh.aalto.fi 'cat > path/to/archive/dir/archive_file.tar.gz'
+ tar czf - path/to/dir | ssh LOGIN@remote.server.fi 'cat > path/to/archive/dir/archive_file.tar.gz'
 
 
 Exercise 1.2.1
 --------------
-
-[Lecture notes: this session has three theory+excersise hands-ons, roughly 40+20 minutes each]
 
 .. exercise::
 
@@ -71,11 +70,14 @@ Exercise 1.2.1
 
    - (*) apply ``chmod o-rwx`` to all recently found files with ``find``
 
- - Make a tar.gz archive of any of your directory at your HOME (or WRKDIR if on Triton), when done
-   list the archive content, then append another file/directory to the existing archive.
+ - Make a tar.gz archive of any of your directory, when done
+   list the archive content, then learn, how how to append another file/directory to the existing archive
    
    - (*) Extract only one particular file to some subdirectory from the archive
    
- - Transfer just created archive using either ``sftp`` or ``rsync``.
+ - Transfer just created archive using ``sftp``.
  
    - (*) Try ssh+tar combo to make transfer and archive on the fly.
+
+
+..[#aaltoremotemount] https://scicomp.aalto.fi/aalto/remoteaccess/#remote-mounting-of-network-filesystems
