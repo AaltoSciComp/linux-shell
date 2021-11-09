@@ -61,7 +61,7 @@ Another use case, making a directory backup with ``rsync``::
  tar czf - path/to/dir | ssh LOGIN@remote.server.fi 'cat > path/to/archive/dir/archive_file.tar.gz'
 
 
-Exercise 1.2.1
+Exercise 1.3
 --------------
 
 .. exercise::
