@@ -42,15 +42,19 @@ Your best friend ever -- ``man`` -- collection of manuals. Type
 But... if it's a builtin, you need to use ``help``.
 
 
-Who/where am I
---------------
+A minimum to get started
+------------------------
 
-You can find info about your user (try them right away)::
+Try them right away::
 
-  id  -or- whoami
+  whoami (-or- id)
   echo $SHELL
-  hostnamectl
+  uname -a (-or- hostnamectl if available)
   pwd
+  ls
+  date
+  grep
+  uptime
 
 For Aalto users: is your default shell a ``/bin/bash``? Login to kosh/taltta and run ``chsh -s /bin/bash``
 
