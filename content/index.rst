@@ -58,10 +58,10 @@ Based on
    files-and-directories
    find
    file-archive-transfer
-   hotkeys
-   files-continue
-   input-output
+   cli_utiltities
+   init_files
    pipelines-grep
+   hotkeys
 
 .. toctree::
    :caption: PART #2. Linux shell scripting
