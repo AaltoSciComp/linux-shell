@@ -20,77 +20,76 @@ Utilities: the building blocks of shell
 
 Additional utilities for the software development, system administration etc
 
+Input and output: redirect and pipes
+------------------------------------
+* Programs can display something: ``echo this is some output`` or ``cat``
+* Programs can take some input: e.g. ``less`` by default displays
+  input if no filename given.
 
-Initialization files and configuration
---------------------------------------
-- When the shell first starts (when you login), it reads some files.
-  These are normal shell files, and it evaluates normal shell commands
-  to set configuration.
-- You can always test things in your own shell and see if it works
-  before putting it in the config files.  Highly recommended!
-- You customize your environment means setting or expanding aliases,
-  variables, functions.
-- The config files are:
+- ``cat /etc/bashrc`` dumps that file to *stardard output* (stdout)
+- ``cat /etc/bashrc | less`` gives it to ``less`` on *standard input*
+  (stdin)
 
-  - ``.bashrc`` (when SSH) and
-  - ``.bash_profile`` (interactive login to a workstation)
-  - they are often a symlink from one to another
-  
-- To get an idea how complicated .bashrc can be take a look at <https://www.tldp.org/LDP/abs/html/sample-bashrc.html>
+Pipe: output of the first command as an input for the second one ``command_a | command_b``::
 
+  # send man page to a default printer
+ man -t ls | lpr
+ 
+ # see what files/directories use the most space, including hidden ones
+ du -hs * .[!.]* | sort -h
+ 
+ # count a number of logged in users
+ w -h | wc -l
+ 
+ # to remove all carriage returns and Ctrl-z characters from a Windows file
+ cat win.txt | tr -d '\15\32' > unix.txt
+ 
+ # to list all matching commands
+ history | grep -w 'command name'
+ 
+ # print all non-printable characters as well
+ ls -lA | cat -A
+ 
+ # print the name of the newest file in the directory (non-dot)
+ ls -1tF | grep -v -E '*/|@' | head -1
 
-One of the things to play with: command line prompt defined in PS1 [#ps1]_
+Redirects:
+ - Like pipes, but send data to/from files instead of other processes.
+ - Replace a file: ``command > file.txt``
+ - Append to a file: ``command >> file.txt`` (be careful you do not mix them up!)
+ - Redirect file as STDIN: ``command < file``  (in case program accepts STDIN only)
 
 ::
 
- PS1="[\d \t \u@\h:\w ] $ "
+ echo Hello World > hello.txt
+ 
+ ls -lH >> current_dir_ls.txt
+ 
+ # join two files into one
+ cat file1 file2 > file3
+ 
+ # extract user names and store them to a file
+ getent passwd | cut -d: -f1,5 > users
+ 
+ # join file1 and 2 lines one by one using : as a delimiter
+ paste -s -d : file1 file2 > file3
+ 
+ # go through file1 and replace spaces with a new line mark, then output to file2
+ tr -s ' ' '\n' < file1 > file2
+ # -or- in more readable format
+ cat file1 | tr -s ' ' '\n' > file2
 
-For special characters see PROMPTING at ``man bash``. To make it
-permanent, should be added to *.bashrc* like ``export PS1``.
+**This is the unix philosophy** and the true power of the shell.  The
+**unix philosophy** is a lot of small, specialized, good programs
+which can be easily connected together. The beauty of the cli are elegant one-liners
+i.e. list of commands executed in one line.
 
+To dump output of all commands at once: group them.
 
-Creating/editing/viewing file
-------------------------------
-* A *text editor* edits files as ASCII.  These are your best friend.
-  In fact, text files are your best friend: rawest, most efficient,
-  longest-lasting way of storing data.
-* "pager" is a generic term for things that view files or data.
+::
 
-Linux command line *text editors* like:
-
-- *nano* - simplest
-- *vim* - minimal.  To save&quit, ``ESC :wq``
-- *emacs* - or the simplest one *nano*.  To save&quit: ``Ctrl-x
-  Ctrl-c``
-
-To view contents of a file in a scrollable fashion: ``less``
-
-Quick look at the text file ``cat filename.txt`` (dumps everything to
-screen- beware of non-text binary files or large files!)
-
-Other quick ways to add something to a file (no need for an editor)
-
-``echo 'Some sentence, or whatever else 1234567!-+>$#' > filename.txt``
-
-``cat > filename2.txt`` to finish typing and write written to the file, press enter, then Ctrl-d.
-
-**The best text viewer ever** ``less -S``  (to open a file in your EDITOR, hit *v*, to search through type */search_word*)
-
-**Watching files while they grow** ``tail -n 0 -f <file>``
-
-Try: add above mentioned ``export PS1`` to *.bashrc*. Remember ``source .bashrc`` to enable changes
-
-
-Exercise 1.4
---------------
-
-.. exercise::
-
- - link *.bash_profile* to *.bashrc*. Tip: see ``ln`` command from the previous session.
- - add ``umask 027`` to *.bashrc*, try creating files. Tip: ``umask -S`` prints your current setting.
- - customize a prompt ``$PS1`` and add it to your *.bashrc*, make sure is has
-   a current directory name and the hostname in it in the format *hostname:/path/to/current/dir*.
-   Hint: save the original PS1 like ``oldPS1=$PS1`` to be able to recover it any time.
-
-
-.. [#ps1] https://www.ibm.com/developerworks/linux/library/l-tip-prompt/
+ { command1; command2; } > filename  # commands run in the current shell  as a group
+ ( command1; command2; ) > filename  # commands run in external shell as a group
+ 
+**Coreutils by GNU** You may find many other useful commands at
+https://www.gnu.org/software/coreutils/manual/coreutils.html
