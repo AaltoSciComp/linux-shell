@@ -61,12 +61,12 @@ Redirects:
  cat file1 file2 > file3
  
  # join file1 and 2 lines one by one using : as a delimiter
- paste -d : file1 file2 > file3
+ paste -d : file1 file2 > file4
  
  # go through file1 and replace spaces with a new line mark, then output to file2
- tr -s ' ' '\n' < file1 > file2
+ tr -s ' ' '\n' < file1 > file5
  # -or- in more readable format
- cat file1 | tr -s ' ' '\n' > file2
+ cat file1 | tr -s ' ' '\n' > file5
  
  # get rid of output, 'null' is a special device
  command > /dev/null
