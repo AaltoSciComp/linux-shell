@@ -101,5 +101,16 @@ To dump output of all commands at once: group them.
  { command1; command2; } > filename  # commands run in the current shell  as a group
  ( command1; command2; ) > filename  # commands run in external shell as a group
 
+stderr
+------
 
+A separate stream (=file descriptor), though we can direct it as well::
 
+ # redirect both stderr and stdout to /dev/null
+ ping -c 1 8.8.8.8 &> /dev/null
+ 
+ # piping both
+ command_a &| command_b
+
+Advanced usage cases, like subshells, process substitution, other file descriptors
+than stdin/stderr/stdout etc will be covered in the Part 2 of this course.
