@@ -1,5 +1,25 @@
-File tools and command line utilities
-=====================================
+Command line utilities
+======================
+
+Utilities: the building blocks of shell
+---------------------------------------
+
+ - wide range of all kind of utilities available in Linux
+ - shell is a glue to bind them all together
+ - commandline is often a long list of those utilities joint into pipe
+   that pass output of each other further
+
+::
+
+ echo, pwd, id, hostname, uname, ps, top, pstree, bg/fg, jobs, kill, touch
+ ls, cd, cp, rm, mv, mkdir, ln, type, stat, file, du, chmod, chgrp (chown),
+ find, tar, gzip, sftp, rsync, man, nano (vim/emacs), less, ssh, ...
+ grep, cat, tr, cut, sort, head, tail, uniq, col, xargs,
+ date, wc, cal, nl, diff, alias, df, basename, w, split, tee, 
+ sed, awk, paste, ...
+
+Additional utilities for the software development, system administration etc
+
 
 Initialization files and configuration
 --------------------------------------
@@ -67,29 +87,10 @@ Exercise 1.4
 .. exercise::
 
  - link *.bash_profile* to *.bashrc*. Tip: see ``ln`` command from the previous session.
- - open *~/.bashrc* for eiditng and add there CDPATH example from above, customize
-   it for your needs and test. Tip: remember ``source ~/.bashrc``.
  - add ``umask 027`` to *.bashrc*, try creating files. Tip: ``umask -S`` prints your current setting.
  - customize a prompt ``$PS1`` and add it to your *.bashrc*, make sure is has
    a current directory name and the hostname in it in the format *hostname:/path/to/current/dir*.
    Hint: save the original PS1 like ``oldPS1=$PS1`` to be able to recover it any time.
- - (*) Set some default options for the ``less`` program in your bashrc.
-   Examples: case-insensitive searching, long prompt, wrapping lines.
-
-
-Utilities: the building blocks of shell
----------------------------------------
-
- - wide range of all kind of utilities available in Linux
- - shell is a glue to bind them all together
- - commandline is often a long list of those utilities joint into pipe
-   that pass output of each other further
-
-::
-
-  cat; sort; tr; cut; head; date; tail; wc; grep; uniq; paste; find  # and many others
- 
-We catch many of them on the way.
 
 
 .. [#ps1] https://www.ibm.com/developerworks/linux/library/l-tip-prompt/
