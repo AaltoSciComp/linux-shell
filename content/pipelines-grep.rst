@@ -88,15 +88,12 @@ Exercise 1.5
 
  - make a pipe that counts number of files/directories (including dot files) in your directory
  - grep directories out of ``ls -l``
- - grep all but blank lines in triton:/etc/bashrc
-
-   - expand the previous one to filter out commented lines also (line starts with #). Note that
-     lines may have spaces before # mark.
-
- - count unique logged in users on triton. Tip: ``w`` or ``users`` gives you
-   a list of all currently login users, many of them have several sessions open.
+ - grep all but blank lines of the 'man cut | grep ...'
+ - Using pipes and commands echo/tr/uniq, find doubled words out of ``My
+   Do Do list: Find a a Doubled Word``.
+ - If you are on a multiuser system, count unique logged in users.
+   Tip: ``w`` or ``users`` gives you a list of all currently login users,
+   many of them have several sessions open. Commands to discover: cut / sort / wc
  - (*) Play with the commands grep, cut: find at least two ways to
-   extract IP addresses only out of /etc/hosts. Tip: *grep* has *-o* option, thus one can build
+   extract IP addresses out of /etc/hosts. Tip: *grep* has *-o* option, thus one can build
    a regular expression that will grab exactly what you need.
- - (*) Using pipes and commands echo/tr/uniq, find doubled words out of ``My
-   Do Do list: Find a a Doubled Word``. Any easier way to do it?
