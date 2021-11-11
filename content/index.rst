@@ -59,8 +59,8 @@ Based on
    find
    file-archive-transfer
    cli_utiltities
-   init_files
    pipelines-grep
+   init_files
    hotkeys
 
 .. toctree::
