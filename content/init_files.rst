@@ -1,3 +1,6 @@
+Initialization files and file editing
+=====================================
+
 Initialization files and configuration
 --------------------------------------
 - When the shell first starts (when you login), it reads some files.
