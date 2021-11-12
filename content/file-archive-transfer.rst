@@ -56,7 +56,8 @@ Another use case, making a directory backup with ``rsync``::
  # sync two directories
  rsync -vauW path/to/dir1/ LOGIN@remote.server.fi:/path/to/destination/dir1
 
-(*) Transferring and archiving your data on the fly to some other place::
+(*) Transferring and archiving your data on the fly to some other place. The example
+will be in covered in details later.::
 
  tar czf - path/to/dir | ssh LOGIN@remote.server.fi 'cat > path/to/archive/dir/archive_file.tar.gz'
 
@@ -70,12 +71,9 @@ Exercise 1.3
 
    - (*) apply ``chmod o-rwx`` to all recently found files with ``find``
 
- - Make a tar.gz archive of any of your directory, when done
-   list the archive content, then learn, how how to append another file/directory to the existing archive
-   
-   - (*) Extract only one particular file to some subdirectory from the archive
-   
- - Transfer just created archive using ``sftp``.
+ - Make a tar.gz archive of any of your directory, when done list the archive content
+ - Extract only one particular file to a subdirectory from the archive
+ - Transfer just created archive using ``sftp`` (if still time, do the same with scp and rsync).
  
    - (*) Try ssh+tar combo to make transfer and archive on the fly.
 
