@@ -266,26 +266,16 @@ Exercise 2.1
 
 .. exercise::
 
- - Define above mentioned ``ping ...`` command as an alias (you name it) in *~/.bashrc*
-   once you verify it works. Then ``source ~/.bashrc`` and try the new alias. Tip: any path
-   that starts with *~* means the file or directory is in your HOME.
- - Create a directory structure, that has five directories and five subdirs in each directory
-   like ``dir1/subdir1``, ``dir1/subdir2``, ... ``dir5/subdir5``
-   with one command. Tip: use Brace expansions and see ``mkdir -p ...``
- - Use command substitution to create an empty file with the date the in the name, like
-   ``file.YYYY-MM-DD.out``. Tip: investigate ``date +"..."`` output format.
- - Create a one-liner with ``ls``, ``echo``, redirections etc that takes a file path
+ - Use command substitution to create an empty file with the date in the name, like
+   ``file.YYYY-MM-DD.out``. Tip: investigate ``date +"..."`` examples above and/or ``man date``.
+ - Learn Brace expansions ``echo {0..9} {a..z}``. Using it, create five directories (``mkdir``) in
+   the current folder with the names like: DIR.NUMBER.CURRENT_YEAR, example mydir.1.2022, mydir.2.2022
+ - Make a command (so called one-liner) with ``ls``, ``echo``, redirections etc that takes a file path
    and says whether this file/directory exists or not. Redirect STDOUT/STDERR to /dev/null.
-   See our ``ping -c 8.8.8.8 ...`` as an example.
- - Use any of the earlier created files to compare there modification times with ``stat -c '%y' filename``,
+   Take ``ping -c 8.8.8.8 ...`` as an example.
+ - Use the example in the text above to send ``du -hs * .[!.]* | sort -h`` output to yourself.
+ - (*) Use any of the earlier created files to compare there modification times with ``stat -c '%y' filename``,
    ``diff`` and the process substitution. 
- - (*) Make a one-liner that copies a small dir (small (!), to save time/traffic)
-   from your Triton's $WRKDIR (or any other remote server) and sends confirmation to your
-   email with the directory listing attached but use process substitution instead of saving
-   directory listing to a file. Tip: use examples in the text.
  - (*) Using pipes and commands ``echo``, ``tr``, ``uniq``, find doubled words out of
    ``My Do Do list: Find a a Doubled Word.``
- - (*) Pick up */scratch/scip/BASH/windows.txt* file and convert it to UNIX format using
-   ``tr`` and redirects only. Tip: remind first session examples.
- - (*) Using ``find``, duplicate current directory tree (to some other dir, only tree, no content)
  - (*) Join *find* and *grep* power and find all the files in /{usr/,}{bin,sbin} that have '#!/bin/bash' in it
