@@ -251,8 +251,8 @@ Exercise 2.2
  - Using ``find`` utility, implement a *fast find* (=*ff*) function ``ff word``. This function must return all
    the files and directories in the current folder which name contains *<word>*. Let it be case insensitive.
    Hint: ``find . -iname ...``
- - (*) Make an advanced version of *ff()* that would accept a directory name to search at as a second
-   argument ($2) and if it is missing then would use current. For a example ``ff word path/to/``.
+ - (*) Make an advanced version of ``ff()`` that would accept a directory name to search at as a second
+   argument *($2)* and if it is missing then would use current. For a example ``ff word path/to/``.
  - (*) ``:() { :|:&; };:`` is a BASH fork-bomb [WARNING: Do not run it!]. Can you explain how it works it?
    *&* in this case sends process to the background.
  - (*) On Triton write a function that ``lfs find`` all the dirs/files at $WRKDIR that do not
