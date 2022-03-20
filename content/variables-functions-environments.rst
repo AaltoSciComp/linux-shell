@@ -125,17 +125,17 @@ need to look them up when you need them.
  var='';  echo ${var:?not defined}
  var=''; err='not defined'; echo ${var:?$err}
  
- # will return 'love you'
- var='I love you'; echo ${var:2:8}
- 
- # will return 15, that is a number of characters
- var='I love you too!'; echo ${#var}
+ # will return 8, that is a number of characters
+ var='abcdefgh'; echo ${#var}
  
  # returns file.ext
  var=26_file.ext; echo ${var#[0-9][0-9]_}
  
- # in both cases returns 26_file
- var=26_file.ext; echo ${var%.ext}
+ # returns archive.tar.gz out of full path
+ fpath=/home/user/archive.tar.gz; echo ${fpath##*/}
+ 
+ # in both cases returns photo
+ var=photo.jpeg; echo ${var%.jpeg}
  var=26_file.ext; echo ${var%.[a-z][a-z][a-z]}
  
  # returns 'I hate you'
@@ -170,27 +170,36 @@ that has logic and can accept input parameters. Functions can be defined on-the-
 from the cli, or can go to a file. Let us set *~/bin/functions* and collect
 everything useful there.::
 
- # cd to the directory and lists it at once
- # can be run as: lcd <path/to/directory>
- lcd() {
-   cd $1
-   ls -FlA
+ # whoami alternative turned into function
+ me() {
+   $(id -un):$(id -gn)@$(hostname -s)
  }
  
+ # turn check space usage into a function
+ spaceusage() {
+   du -hs * .[!.]* | sort -h
+ }
+  
  # in one line, note spaces and ; delimiters
- lcd() { cd $1; ls -FlA; }
+ myfunction() { command; command; }
  # -or- in a full format
- function lcd { cd $1; ls -FlA; }
+ function myfunction { command; command; }
  
-By now function has been defined, to run it, one has to invoke it.::
+Read functions into the current shell environment and run them::
 
  source ~/bin/functions
- lcd dir1
+ me
+ spaceusage
 
 The function refers to passed arguments by their position (not by name),
 that is $1, $2, and so forth::
 
  func_name arg1 arg2 arg3  # will become $1 $2 $3
+
+ # advanced version of spaceusage using BASH variables magic
+ spaceusage() { 
+   du -hs ${1:-.}/* ${1:-.}/.[!.]* | sort -h;
+ }
 
 Functions in BASH have ``return`` but it only returns the exit code. Useful
 in cases where you want to 'exit' the function and continue to the rest of the script.
@@ -199,6 +208,12 @@ seen everywhere else. ``local`` can be used to localize the vars. Compare::
 
  var=2; f() { var=3; }; f; echo $var
  var=2; f() { local var=3; }; f; echo $var
+
+ # get filename out of path
+ filepath() {
+   local fpath=${1:?file name is missing} && \
+   echo ${fpath##*/}
+ }
 
 If you happened to build a function in an alias way, redefining a command name while
 using that original command inside the function, you need to type *command* before
@@ -217,27 +232,19 @@ command substitution, or any other case that launches a subshell, like
 Exercise 2.2
 ------------
 
-[Lecturer's note: ~20 minutes for the hands-on exercises. Solution examples can be given at very end.]
-
 .. exercise::
 
- - Expand ``lcd()`` function to have WRKDIR as a default directory in case function is invoked
-   without any input parameter.
- - Expand the Exersice 2.1's ``ls ... && echo .. || echo`` example, make a function that check any
-   file/directory existense given as an argument, like ``checkexist path/to/file``. If no argument
-   given, function must return an error message "File or directory not found".
- - Implement a ``spaceusage()`` function with ``du ... | sort ...`` (see Aliases part examples)
-   that takes directory path as an argument, and if missing uses current directory.
- - Using ``find`` utility, implement a 'fast find' function ``ff word``. The function should return a long listing
-   (ls -ldA) of any file or directory names that contain the <word>. Make search case insensitive.
-   Note: your newly ceated functions should go to *~/bin/functions* file.
- - Write two functions ``get_filename()`` and ``get_extension()``. Both should accept a full filename
-   like *path/to/filename.ext* of any length and return *filename* or *ext* correspondingly.
-   Extenssion can be of any length. Function should handle missing argument case correctly.
- - Expand *get_filename()* so that it would accept extenssion pattern as a second argument (if given) and
-   return *filename* out of *path/to/filename.tar.gz* or alike. I.e. ``get_filename path/to/filename.tar.gz tar.gz``
- - (*) By now one should be able to explain: ``:() { :|:&; };:``. *&* in this case sends process
-   to background. [WARNING: it is a forkbomb]
+ - Add ``spaceusage()``, ``filepath()``, ``me()`` to your *~/bin/functions* and play with them.
+   Note: here and later, we suggest that all newly created functions would go to *~/bin/functions* file.
+ - Using ``filepath()`` function make a ``filename()` so that function would output a *filename* with no
+   extension. Like ``filename path/to/archive.tar.gz`` would return *archive*.
+ - Using ``find`` utility, implement a *fast find* (=*ff*) function ``ff word``. This function must return all
+   the files and directories in the current folder which name contains *<word>*. Let it be case insensitive.
+   Hint: ``find . -iname ...``
+ - (*) Make an advanced version of *ff()* that would accept a directory name to search at as a second
+   argument ($2) and if it is missing then would use current. For a example ``ff word path/to/``.
+ - (*) ``:() { :|:&; };:`` is a BASH fork-bomb [WARNING: Do not run it!]. Can you explain how it works it?
+   *&* in this case sends process to the background.
  - (*) On Triton write a function that ``lfs find`` all the dirs/files at $WRKDIR that do not
    belong to your group and fix the group ownership. Use ``find ... | xargs``. Tip: on Triton at
    WRKDIR your username $USER and group name are the same. On any other filesystem, ``$(id -gn)``
