@@ -133,7 +133,9 @@ need to look them up when you need them.
  
  # returns archive.tar.gz out of full path
  fpath=/home/user/archive.tar.gz; echo ${fpath##*/}
- 
+ # returns path with no file name
+ echo ${fpath%/*}
+
  # in both cases returns photo
  var=photo.jpeg; echo ${var%.jpeg}
  var=26_file.ext; echo ${var%.[a-z][a-z][a-z]}
