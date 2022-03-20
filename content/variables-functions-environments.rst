@@ -212,10 +212,18 @@ seen everywhere else. ``local`` can be used to localize the vars. Compare::
  var=2; f() { local var=3; }; f; echo $var
 
  # get filename out of path
- filepath() {
-   local fpath=${1:?file name is missing} && \
+ filename() {
+   local fpath=${1:?path is missing} && \
    echo ${fpath##*/}
  }
+ 
+ # filepath with no name
+ filepath() {
+   local fpath=${1:?path is missing} && \
+   echo ${fpath%/*}
+ }
+
+
 
 If you happened to build a function in an alias way, redefining a command name while
 using that original command inside the function, you need to type *command* before
@@ -236,10 +244,10 @@ Exercise 2.2
 
 .. exercise::
 
- - Add ``spaceusage()``, ``filepath()``, ``me()`` to your *~/bin/functions* and play with them.
+ - Add ``spaceusage()``, ``filename()``, ``filepath()``, ``me()`` to your *~/bin/functions* and play with them.
    Note: here and later, we suggest that all newly created functions would go to *~/bin/functions* file.
- - Using ``filepath()`` function make a ``filename()`` so that function would output a *filename* with no
-   extension. Like ``filename path/to/archive.tar.gz`` would return *archive*.
+ - Using ``filename()`` function make a ``filebasename()`` so that function would output a *filename* with no
+   extension. Like ``filebasename path/to/archive.tar.gz`` would return *archive*.
  - Using ``find`` utility, implement a *fast find* (=*ff*) function ``ff word``. This function must return all
    the files and directories in the current folder which name contains *<word>*. Let it be case insensitive.
    Hint: ``find . -iname ...``
