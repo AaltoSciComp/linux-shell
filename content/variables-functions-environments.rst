@@ -29,57 +29,6 @@ Other options::
 **Extension is optional** note that *.sh* extension is optional, script may have any name
 
 
-Functions as part of your environment
--------------------------------------
-Alias is a shortcut to a long command, while function is a piece of programming
-that has logic and can accept input parameters. Functions can be defined on-the-fly
-from the cli, or can go to a file. Let us set *~/bin/functions* and collect
-everything useful there.::
-
- # cd to the directory and lists it at once
- # can be run as: lcd <path/to/directory>
- lcd() {
-   cd $1
-   ls -FlA
- }
- 
- # in one line, note spaces and ; delimiters
- lcd() { cd $1; ls -FlA; }
- # -or- in a full format
- function lcd { cd $1; ls -FlA; }
- 
-By now function has been defined, to run it, one has to invoke it.::
-
- source ~/bin/functions
- lcd dir1
-
-The function refers to passed arguments by their position (not by name),
-that is $1, $2, and so forth::
-
- func_name arg1 arg2 arg3  # will become $1 $2 $3
-
-Functions in BASH have ``return`` but it only returns the exit code. Useful
-in cases where you want to 'exit' the function and continue to the rest of the script.
-By default functions' variables are in the global space, once chaged in the function is
-seen everywhere else. ``local`` can be used to localize the vars. Compare::
-
- var=2; f() { var=3; }; f; echo $var
- var=2; f() { local var=3; }; f; echo $var
-
-If you happened to build a function in an alias way, redefining a command name while
-using that original command inside the function, you need to type *command* before
-the name of the command, like::
-
- rm() { command rm -i "$@"; } 
-
-here you avoid internal loops (forkbombs).
-
-Exporting a function with ``export -f function_name`` lets you pass a function to a sub-shell,
-by storing that function in a environment variable. Helpful when you want to use it within a 
-command substitution, or any other case that launches a subshell, like
-``find ... -exec bash -c 'function_name {}' \;``. 
-
-
 Variables
 ---------
 In shell, variables define your environment. Common practice is that environmental vars are written IN CAPITAL: $HOME, $SHELL, $PATH, $PS1, $RANDOM. To list all defined variables ``printenv``. All variables can be used or even redefined. No error if you call an undefined var, it is just considered to be empty::
@@ -212,6 +161,57 @@ To address special characters::
 
  # replacing all tabs with the spaces in the var
  var=${var//$'\t'/ }
+
+
+Functions
+---------
+Alias is a shortcut to a long command, while function is a piece of programming
+that has logic and can accept input parameters. Functions can be defined on-the-fly
+from the cli, or can go to a file. Let us set *~/bin/functions* and collect
+everything useful there.::
+
+ # cd to the directory and lists it at once
+ # can be run as: lcd <path/to/directory>
+ lcd() {
+   cd $1
+   ls -FlA
+ }
+ 
+ # in one line, note spaces and ; delimiters
+ lcd() { cd $1; ls -FlA; }
+ # -or- in a full format
+ function lcd { cd $1; ls -FlA; }
+ 
+By now function has been defined, to run it, one has to invoke it.::
+
+ source ~/bin/functions
+ lcd dir1
+
+The function refers to passed arguments by their position (not by name),
+that is $1, $2, and so forth::
+
+ func_name arg1 arg2 arg3  # will become $1 $2 $3
+
+Functions in BASH have ``return`` but it only returns the exit code. Useful
+in cases where you want to 'exit' the function and continue to the rest of the script.
+By default functions' variables are in the global space, once chaged in the function is
+seen everywhere else. ``local`` can be used to localize the vars. Compare::
+
+ var=2; f() { var=3; }; f; echo $var
+ var=2; f() { local var=3; }; f; echo $var
+
+If you happened to build a function in an alias way, redefining a command name while
+using that original command inside the function, you need to type *command* before
+the name of the command, like::
+
+ rm() { command rm -i "$@"; } 
+
+here you avoid internal loops (forkbombs).
+
+Exporting a function with ``export -f function_name`` lets you pass a function to a sub-shell,
+by storing that function in a environment variable. Helpful when you want to use it within a 
+command substitution, or any other case that launches a subshell, like
+``find ... -exec bash -c 'function_name {}' \;``. 
 
 
 Exercise 2.2
