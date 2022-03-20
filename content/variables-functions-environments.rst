@@ -238,7 +238,7 @@ Exercise 2.2
 
  - Add ``spaceusage()``, ``filepath()``, ``me()`` to your *~/bin/functions* and play with them.
    Note: here and later, we suggest that all newly created functions would go to *~/bin/functions* file.
- - Using ``filepath()`` function make a ``filename()` so that function would output a *filename* with no
+ - Using ``filepath()`` function make a ``filename()`` so that function would output a *filename* with no
    extension. Like ``filename path/to/archive.tar.gz`` would return *archive*.
  - Using ``find`` utility, implement a *fast find* (=*ff*) function ``ff word``. This function must return all
    the files and directories in the current folder which name contains *<word>*. Let it be case insensitive.
