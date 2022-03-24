@@ -25,14 +25,20 @@ Selected examples file attributes and variables testing:
 
 ::
 
- # checks that file exists
- [[ -f $file ]] && echo $file exists || { echo error; exit 1; }
-
  # check that directory does not exist before creating one
+ # where $dir is a variable
  [[ -d $dir ]] || mkdir $dir
- 
+
+ # checks that file exists
+ [[ -r $file ]] && mv $file ${file}.$(date +%Y-%m-%d) || echo $file is either non-readable or does not exist
+ # in the script
+ [[ -r $file ]] && mv $file ${file}.$(date +%Y-%m-%d) || { echo $file does not exist; exit 1; }
+  
  # Check if script/function is given an argument
  [[ -z $1 ]] && { echo no argument; exit 1; }
+ 
+ # Often used alternative to ${var:-a_value} or ${var:?not defined}
+ [[ -n $var ]] || echo var is not defined
 
 Note that integers have their own construction ``(( expression ))`` (we come back to this),
 though ``[[ ]]`` will work for them too.  The following are more tests:
@@ -49,10 +55,13 @@ though ``[[ ]]`` will work for them too.  The following are more tests:
 
 ::
 
- # Find out were we are
- [[ $(pwd) == /some/path ]] ...
+ # If 'var' is ... then
+ [[ $var == 'some_value' ]] && ...
 
- # Check, grouping, booleans as a demo
+ # If path is ... then 
+ [[ $(pwd) == /some/path ]] && ...
+
+ # grouping () and booleans && || within the [[ ]]
  [[ $(hostname -s) == kosh && ($(pwd) == $WORK || $(pwd) == $SCRATCH) ]] ...
 
  # note that [[ ]] always require spaces before and after brackets (!)
@@ -71,14 +80,24 @@ In addition (old school), double brackets inherit several operands to work with 
  # 'return 1').  Remember, $# is special variable for number of arguments.
  [[ $# -eq 0 ]] && { echo Usage: $0 arguments; exit 1; }
  
- # if dir exists and is not empty, then do smth
- $d=path/to/dir; [[ -d $d && $(ls -A $d) ]] && tar caf ...
+ # if dir exists and is not empty, then archive it
+ d=path/to/dir; [[ -d $d && $(ls -A $d) ]] && tar caf $(basename $d).$(date +%Y-%m-%d).tar.gz $d
  
- # append PATH
- d=/path/to/bin; [[ -d $d && ! $(echo $PATH|grep $d) ]] && export PATH+=:$d
+ # append PATH function 
+ # as an exercise, we will re-implement this with the matching operator =~, see below
+ appendPATH() {
+   local dpath=${1:?directory is missing} && \
+   [[ -d $dpath && ! $(echo $PATH|grep $dpath) ]] && export PATH+=:$dpath
+ }
 
 The matching operator ``=~`` brings more opportunities, because regular expressions come in play.
-Even more: matched strings in parentheses assigned to *${BASH_REMATCH[]}* array elements!
+Matched strings in parentheses assigned to *${BASH_REMATCH[]}* array elements.
+
+::
+
+ # change shell on the Linux server if it is not BASH
+ [[ ! $SHELL =~ bash ]] && chsh -s /bin/bash
+
 
 * Regular expressions (regexs) are basically a mini-language for
   searching within, matching, and replacing text in strings.
@@ -117,8 +136,8 @@ Selected operators:
  # match an email
  email='jussi.meikalainen@aalto.fi'; regex='(.*)@(.*)'; [[ "$email" =~ $regex ]]; echo ${BASH_REMATCH[*]}
 
- # a number out of the text
- txt='Some text with #1278 in it'; regex='#([0-9]+ )'; [[ "$txt" =~ $regex ]] && echo ${BASH_REMATCH[1]} || echo do not match
+ # extract a number out of the text
+ txt='A text with #1278 in it'; regex='#([0-9]+ )'; [[ "$txt" =~ $regex ]] && echo ${BASH_REMATCH[1]} || echo do not match
  
  # case insensitive matching
  var1=ABCD, var2=abcd; [[ ${var1,,} =~ ${var2,,} ]] && ...
@@ -153,7 +172,7 @@ an arithmetic expression ``$(( ))``, or a command substitution.
  fi
 
  # checking command output
- if ping -c 1 8.8.8.8 &> /dev/null; then
+ if ping -c 1 google.com &> /dev/null; then
    echo Online
  elif ping -c 1 127.0.0.1 &> /dev/null; then
    echo Local interface is down
