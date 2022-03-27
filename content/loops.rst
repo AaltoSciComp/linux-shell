@@ -67,6 +67,12 @@ one of the option is ``bc``, often installed by default.
   # compute Pi number
   echo "scale=10; 4*a(1)" | bc -l
 
+A way to get percentage with the floating point
+
+::
+
+ done=5; total=12; printf "%.2f%%\n" "$((10**3*100*done/total))e-3"
+
 
 For loops
 ---------
@@ -123,7 +129,7 @@ Loop output can be piped or redirected:
 
 ::
 
- # loop other all Triton users to find out who has logged in within last month
+ # loop other all users (on a server) to find out who has logged in within last month
  for u in $(getent group triton-users | cut -d: -f4 | tr ',' ' '); do
    echo $u: $(last -Rw -n 1 $u | head -1)
  done | sort > filename
@@ -238,17 +244,20 @@ Exercise 2.4
 
 .. exercise::
 
- - Expand *tarit.sh* so that it would accept none or multiple directories. 
- - Using ``for`` loop rename all the files with the *.txt* extension to *.fixed.txt*.
-   Tip: create dummy .txt files with ``mkdir d{1..3}; touch d{1..3}/{1..3}.txt``.
-   Tip #2: combine 'for' loop with 'find': ``for f in $(find . -name '*.txt'); ...``.
- - Use the ``while`` example with *.cvs*, take the *demospace/Finnish_Univ_students_2018.csv*
+ - Using ``for d; do ... done`` expand *tarit.sh* so that it would accept multiple directories. 
+   If no directory given, it still suppose to archive the current one.
+ - Using ``for`` loop rename all the files in the current directory tree with the *.txt* extension to *.fixed.txt*.
+   Step #1: create dummy .txt files first with ``mkdir d{1..3}; touch d{1..3}/{1..3}.txt``.
+   Step #2: combine 'for' loop with 'find': ``for f in $(find . -name '*.txt'); do ... done``.
+ - Use this page ``while`` example with *.cvs*, take the *demospace/Finnish_Univ_students_2018.csv*
    to count total number of students around Finland. Tip: add checking that the number of
    students field is a number ``[[ $totalnmb =~ ^[0-9]+$ ]]``
  - Using built-in arithmetic write a script *daystill.sh* that counts a number of days till a
    deadline (vacation/salary). 
-   Script takes date as an argument, date format suitable to ``date -d`` like ``days_till 2019-6-1``.
-   Tip: use ``date +%s`` and convert seconds to days (roughly).
+   Script should take a date as an argument, where date format is ``days_till 2019-6-1``.
+   Tip #1: ``date -d GIVEN_DATE +"%s"`` returns number of seconds till GIVEN_DATE since
+   1970-01-01 00:00:00 UTC. ``date +%s`` returns seconds till now.
+   Tip #2: enough if you convert seconds to a number of days roughly ``$(( ... /60/60/24))``.
  - Make script that takes a list of files and checks if there are files in there with
    the spaces in the name, and if there are, rename them by replacing spaces with the underscores.
    Use BASH's builtin functionality only.
