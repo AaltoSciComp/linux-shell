@@ -273,7 +273,7 @@ Exercise 2.1
  - Make a command (so called one-liner) with ``ls``, ``echo``, redirections etc that takes a file path
    and says whether this file/directory exists or not. Redirect STDOUT/STDERR to /dev/null.
    Take ``ping -c 8.8.8.8 ...`` as an example.
- - Use the example in the text above to send ``du -hs * .[!.]* | sort -h`` output to yourself.
+ - Use the example in the text above to send ``du -hs * .[!.]* | sort -h`` output to yourself via email.
  - (*) Use any of the earlier created files to compare there modification times with ``stat -c '%y' filename``,
    ``diff`` and the process substitution. 
  - (*) Using pipes and commands ``echo``, ``tr``, ``uniq``, find doubled words out of
