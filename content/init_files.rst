@@ -61,7 +61,7 @@ Other quick ways to add something to a file (no need for an editor)
 Try: add above mentioned ``export PS1`` to *.bashrc*. Remember ``source .bashrc`` to enable changes
 
 
-Exercise 1.4
+Exercise 1.5
 --------------
 
 .. exercise::
