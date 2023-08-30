@@ -64,7 +64,7 @@ Redirects:
  # join two files into one
  cat file1 file2 > file3
 
-# go through file1 and replace spaces with a new line mark, then output to file2
+ # go through file1 and replace spaces with a new line mark, then output to file2
  tr -s ' ' '\n' < file1 > file4
  tr -s ' ' '\n' < file2 > file5
  # -or- in more readable format
