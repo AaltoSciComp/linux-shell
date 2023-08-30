@@ -34,7 +34,7 @@ Input and output: redirect and pipes
 Pipe: output of the first command as an input for the second one ``command_a | command_b``::
 
  # see what files/directories use the most space, including hidden ones
- du -hs * .[!.]* | sort -h
+ du -hs * .[!.]* | sort -h | tail -n 10
  
  # count a number of logged in users
  w -h | wc -l
@@ -57,16 +57,21 @@ Redirects:
  
  ls -lH >> current_dir_ls.txt
  
+ # create a few dummy files
+ echo 'a b c' > file1
+ echo 'x y z' > file2
+
  # join two files into one
  cat file1 file2 > file3
- 
- # join file1 and 2 lines one by one using : as a delimiter
- paste -d : file1 file2 > file4
- 
- # go through file1 and replace spaces with a new line mark, then output to file2
- tr -s ' ' '\n' < file1 > file5
+
+# go through file1 and replace spaces with a new line mark, then output to file2
+ tr -s ' ' '\n' < file1 > file4
+ tr -s ' ' '\n' < file2 > file5
  # -or- in more readable format
  cat file1 | tr -s ' ' '\n' > file5
+  
+ # join file1 and 2 lines one by one using : as a delimiter
+ paste -d : file4 file5 > file6
  
  # get rid of output, 'null' is a special device
  command > /dev/null
