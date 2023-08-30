@@ -70,8 +70,8 @@ If you have already running process, you can background with Ctrl-z and then
 ``bg``. Drawback: there is no easy way to redirect the running task
 output, so if it generates output it covers your screen.
 
-List the jobs running in the background with ``jobs``, get a job back
-online with  ``fg`` or ``fg <job_number>``. There can be multiple
+List the jobs running in the background with ``jobs -l`` (show real PID as well),
+get a job back online with  ``fg`` or ``fg <job_number>``. There can be multiple
 background jobs.
 
 Kill a foreground job: Ctrl-c
