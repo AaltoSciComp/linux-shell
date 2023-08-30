@@ -24,7 +24,15 @@ your current directory (i.e. *pwd*), but there are many options::
 
 Special notations and expanssions in BASH, can be used with any command::
 
- ./, ../, ~, *, ?, [], [!], {abc,xyz}, {1..10}
+ ./    stands for the current directory
+ ../   parent directory
+ ~     home directory
+ *     a wildcard, replaces any character(s) or none
+ ?     only one character
+ []    a group of characters, like [abc]
+ [!]   same as above but negated, i.e. all but those, like [!a-zA-Z]
+ {ab,cd,xyz}  expands by BASH as 'abc cd xyz'
+ {0..9}      expands as '0 1 2 3 4 5 6 7 8 9'
  
 For the quotation::
 
