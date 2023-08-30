@@ -1,11 +1,10 @@
-Pipelines and grep
-==================
+Evaluations, separators and grep
+================================
 
-Pipelines: ;, &&, and ||
-------------------------
-- You can put several commands on the same line using different
-  separators.
-- The shell term for this is *pipelines*.
+Evaluations and separators:  ;  &&  ||
+--------------------------------------
+
+- With ; you can put several commands on the same line.
 
 Chaining: ``command_a ; command_b``: always runs both commands.
 
@@ -14,7 +13,7 @@ Note that this is opposite of normal Boolean logic!
 
 The ``&&`` and ``||`` are `short-circuit
 <https://en.wikipedia.org/wiki/Short-circuit_evaluation>`__ (lazy)
-boolean operators.  They can be used for quick conditionsals.
+boolean operators.  They can be used for quick conditionals.
 
 * ``command_a && command_b``
 
