@@ -193,28 +193,27 @@ Expanding *tarit.sh* to a script
 
  #!/bin/bash
 
-# usage: tarit.sh <dirname>
+ # usage: tarit.sh <dirname>
 
-dir=$1
+ dir=$1
 
-# if directory name is given as an argument
-if [[ -d $dir ]]; then
-  archive=$(basename $dir).$(date +%Y-%m-%d).tar.gz
+ # if directory name is given as an argument
+ if [[ -d $dir ]]; then
+   archive=$(basename $dir).$(date +%Y-%m-%d).tar.gz
 
-# if no argument, then the current directory
-elif [[ -z $dir ]]; then
-  dir='.'
-  archive=$(basename $(pwd)).$(date +%Y-%m-%d).tar.gz
+ # if no argument, then the current directory
+ elif [[ -z $dir ]]; then
+   dir='.'
+   archive=$(basename $(pwd)).$(date +%Y-%m-%d).tar.gz
 
-# otherwise error and exit
-else
-  echo $dir does not exist or empty
-  exit 1
-fi
+ # otherwise error and exit
+ else
+   echo $dir does not exist or empty
+   exit 1
+ fi
 
-# run tar
-tar caf $archive $dir
-
+ # run tar
+ tar caf $archive $dir
 
 
 case
