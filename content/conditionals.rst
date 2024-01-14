@@ -198,7 +198,7 @@ Expanding *tarit.sh* to a script
 dir=$1
 
 # if directory name is given as an argument
-if [[ -d $dir && $(ls -A $dir) ]]; then
+if [[ -d $dir ]]; then
   archive=$(basename $dir).$(date +%Y-%m-%d).tar.gz
 
 # if no argument, then the current directory
