@@ -47,6 +47,15 @@ Based on
  - see also other references in the text
 
 
+Videos
+------
+
+Videos of previous instances:
+
+* Part 1, 2023: `Playlist <https://www.youtube.com/playlist?list=PLZLVmS9rf3nPRb-QjrWsg_fTUfJ5Bbv07>`__
+* Part 2, 2024: `Playlist
+  <https://www.youtube.com/playlist?list=PLZLVmS9rf3nOXyXh0TEgGhS7bUdOT0dGg>`__
+
 
 .. toctree::
    :caption: PART #1. Linux shell basics
