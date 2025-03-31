@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traps, debugging, profiling &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Parallel, crontab, perl/awk/sed" href="../parallel-crontab-perlawksed/" />
+    <link rel="prev" title="Arrays, input, Here Documents" href="../arrays-inputs-here-documents/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Traps, debugging, profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#catching-kill-signals-trap">Catching kill signals: trap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-and-profiling">Debugging and profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Traps, debugging, profiling</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/traps-debugging-profiling.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="traps-debugging-profiling">
+<h1>Traps, debugging, profiling<a class="headerlink" href="#traps-debugging-profiling" title="Link to this heading"></a></h1>
+<section id="catching-kill-signals-trap">
+<h2>Catching kill signals: trap<a class="headerlink" href="#catching-kill-signals-trap" title="Link to this heading"></a></h2>
+<p>What if your script generates temp file and you’d like to keep it clean
+even if script gets interrupted at the execution time?</p>
+<p>The built-in <code class="docutils literal notranslate"><span class="pre">trap</span></code> command lets you tell the shell what to do if your script received
+signal to exit. It can catch all, but here listed most common by their
+numbers.  Note that signals are one of the common ways of communicating
+with running processes in UNIX: you see these same numbers and names
+in programs like <code class="docutils literal notranslate"><span class="pre">kill</span></code>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0  EXIT  exit command</p></li>
+<li><p>1  HUP   when session disconnected</p></li>
+<li><p>2  INT   interrupt - often Ctrl-c</p></li>
+<li><p>3  QUIT  quit - often Ctrl-</p></li>
+<li><p>9  KILL  real kill command, it can’t be caught</p></li>
+<li><p>15 TERM  termination, by <code class="docutils literal notranslate"><span class="pre">kill</span></code> command</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;trap&#39; catches listed signals only, others it silently ignores</span>
+<span class="c1"># Usage: trap group_of_commands/function list_of_signals</span>
+
+<span class="n">trap</span> <span class="s1">&#39;echo Do something on exit&#39;</span> <span class="n">EXIT</span>
+</pre></div>
+</div>
+<p>Expanding the backup script from the Arrays section, this can be added to the very
+beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interrupted</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s1">&#39;Seems that backup has been interrupted in the middle&#39;</span>
+  <span class="n">echo</span> <span class="s1">&#39;Rerun the script later to let rsync to finish its job&#39;</span>
+  <span class="n">exit</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="n">trap</span> <span class="n">interrupted</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">15</span>
+<span class="c1"># ... the rest of the script</span>
+</pre></div>
+</div>
+<p>In other situation, instead of <em>echo</em>, one can come up with something else:
+removing temp files, put something to the log file or output a
+valuable error message to the screen.</p>
+<p><strong>Hint</strong> About signals see <em>Standard signals</em> section at <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">7</span> <span class="pre">signal</span></code>. Like Ctrl-c is INT (aka SIGINT).</p>
+</section>
+<section id="debugging-and-profiling">
+<h2>Debugging and profiling<a class="headerlink" href="#debugging-and-profiling" title="Link to this heading"></a></h2>
+<p>BASH has no a debugger, but there are several ways to help with the debugging</p>
+<p>Check for syntax errors without actual running it <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-n</span> <span class="pre">script.sh</span></code></p>
+<p>Or echos each command and its results with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-xv</span> <span class="pre">script.sh</span></code>, or even adding options directly
+to the script. <code class="docutils literal notranslate"><span class="pre">-x</span></code> enables tracing during the execution, <code class="docutils literal notranslate"><span class="pre">-v</span></code> makes bash to be verbose. Both
+can be set directly from the command line as above or with <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">-xv</span></code> inside the script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -xv</span>
+</pre></div>
+</div>
+<p>To enable debugging for some parts of the code only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">+</span><span class="n">x</span>
+<span class="o">...</span> <span class="n">some</span> <span class="n">code</span>
+<span class="nb">set</span> <span class="o">-</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>If you want to check quickly a few commands, with respect to how variables or other
+substitutions look like, use DEBUG variable set to <em>echo</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+$DEBUG command1 $arguments
+command2
+
+# call this script like &#39;DEBUG=echo ./script.sh&#39; to see how *command1* looks like
+# otherwise the script can be run as is.
+</pre></div>
+</div>
+<p>One can also <code class="docutils literal notranslate"><span class="pre">trap</span></code> at the EXIT, this should be the very first lines in the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>end() { echo Variable Listing: a = $a  b = $b; }
+trap end EXIT  # will execute end() function on exit
+</pre></div>
+</div>
+<p>For a sake of profiling one can use PS4 and <code class="docutils literal notranslate"><span class="pre">date</span></code> (GNU version that deals with nanoseconds). PS4 is
+a built in BASH variable which is printed before each command bash displays during an execution trace.
+The first character of PS4 is replicated multiple times, as necessary, to indicate multiple levels
+of indirection. The default is <code class="docutils literal notranslate"><span class="pre">+</span></code>. Add the lines below right after ‘#!/bin/bash’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will give you execution time of each command and its line number</span>
+<span class="c1"># \011 is a tab</span>
+<span class="n">PS4</span><span class="o">=</span><span class="s1">&#39;+</span><span class="se">\011</span><span class="s1">$(date &quot;+</span><span class="si">%s</span><span class="s1">.%N&quot;)</span><span class="se">\011</span><span class="s1">$</span><span class="si">{LINENO}</span><span class="se">\011</span><span class="s1">&#39;</span>
+<span class="nb">set</span> <span class="o">-</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>Optionally, if you want tracing output to be in a separate file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PS4=&#39;+\011$(date &quot;+%s.%N&quot;)\011${LINENO}\011&#39;
+exec 5&gt; ${0##*/}.$$.x &amp;&amp; BASH_XTRACEFD=&#39;5&#39; &amp;&amp; set -x
+</pre></div>
+</div>
+<p>Or to get your script looking more professional, one can enable DEBUG, i.e. tracing only
+happens when you run as <code class="docutils literal notranslate"><span class="pre">DEBUG=profile</span> <span class="pre">./script.sh</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case $DEBUG in
+  profile|PROFILE|p|P)
+    PS4=&#39;+\011$(date &quot;+%s.%N&quot;)\011${LINENO}\011&#39;
+    exec 5&gt; ${0##*/}.$$.x &amp;&amp; BASH_XTRACEFD=&#39;5&#39; &amp;&amp; set -x ;;
+esac
+</pre></div>
+</div>
+<p>For the larger scripts with loops and functions tracing output with the date stamps and line numbers
+can be summarized. For further discussion please take a look at <a class="footnote-reference brackets" href="#profiling" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="profiling" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup">https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../arrays-inputs-here-documents/" class="btn btn-neutral float-left" title="Arrays, input, Here Documents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../parallel-crontab-perlawksed/" class="btn btn-neutral float-right" title="Parallel, crontab, perl/awk/sed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loops &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Arrays, input, Here Documents" href="../arrays-inputs-here-documents/" />
+    <link rel="prev" title="Conditionals" href="../conditionals/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Loops</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arithmetic">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops">For loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while-until-loops">While/until loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loop-control">Loop control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2-4">Exercise 2.4</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Loops</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/loops.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="loops">
+<h1>Loops<a class="headerlink" href="#loops" title="Link to this heading"></a></h1>
+<section id="arithmetic">
+<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading"></a></h2>
+<p>BASH works with integers only (no floating point) but supports wide range of arithmetic operators using
+arithmetic expansion <code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">expression</span> <span class="pre">))</span></code>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All tokens in the expression undergo parameter and variable expansion, command substitution,
+and quote removal. The result is treated as the arithmetic expression to be evaluated.</p></li>
+<li><p>Arithmetic expansion may be nested.</p></li>
+<li><p>Variables inside double parentheses can be without a $ sign.</p></li>
+<li><p>BASH has other options to work with the integers, like <code class="docutils literal notranslate"><span class="pre">let</span></code>, <code class="docutils literal notranslate"><span class="pre">expr</span></code>, <code class="docutils literal notranslate"><span class="pre">$[]</span></code>, and in
+older scripts/examples you may see them.</p></li>
+</ul>
+</div></blockquote>
+<p>Available operators:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n++</span></code>, <code class="docutils literal notranslate"><span class="pre">n--</span></code>, <code class="docutils literal notranslate"><span class="pre">++n</span></code>, <code class="docutils literal notranslate"><span class="pre">--n</span></code> increments/decrements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> plus minus</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**</span></code> exponent</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code> multiplication, (truncating) division, remainder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code> logical AND, OR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expr?expr:expr</span></code> conditional operator (ternary)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> comparison</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, <code class="docutils literal notranslate"><span class="pre">/=</span></code>, <code class="docutils literal notranslate"><span class="pre">%=</span></code> assignment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">()</span></code>  sub-expressions in parentheses  are  evaluated first</p></li>
+<li><p>The full list includes bitwise operators, see <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">bash</span></code> section <em>ARITHMETIC EVALUATION</em>.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># without dollar sing value is not returned, though &#39;n&#39; has been incremented
+n=10; ((n++))
+
+# but if we need a value
+n=10; m=3; q=$((n**m))
+
+# here we need exit code only
+if ((q%2)); then echo odd; fi
+if ((n&gt;=m)); then ...; fi
+
+# condition ? integer_value_if_true : integer_value_if_false
+n=2; m=3; echo $((n&lt;m?10:100))
+
+# checking number of input parameters, if $# is zero, then exit
+# (though the alternative [[ $# == 0 ]] is more often used, and intuitively more clear)
+if ! (($#)); then echo Usage: $0 argument; exit1; fi
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># sum all numbers from 1..n, where n is a positive integer
+# Gauss method, summing pairs
+if (($#==1)); then
+  n=$1
+else
+  read -p &#39;Give me a positive integer &#39; n
+fi
+echo Sum from 1..$n is $((n*(n+1)/2))
+</pre></div>
+</div>
+<p>Left for the exercise: make a summation directly 1+2+3+…+n and compare performance with the above one.</p>
+<p>For anything more mathematical than summing integers, one should use something else,
+one of the option is <code class="docutils literal notranslate"><span class="pre">bc</span></code>, often installed by default.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># bc -- an arbitrary precision calculator language</span>
+<span class="c1"># compute Pi number</span>
+<span class="n">echo</span> <span class="s2">&quot;scale=10; 4*a(1)&quot;</span> <span class="o">|</span> <span class="n">bc</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>A way to get percentage with the floating point</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">done</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span> <span class="n">total</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span> <span class="n">printf</span> <span class="s2">&quot;</span><span class="si">%.2f%%</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="s2">&quot;$((10**3*100*done/total))e-3&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="for-loops">
+<h2>For loops<a class="headerlink" href="#for-loops" title="Link to this heading"></a></h2>
+<p>BASH offers several options for iterating over the lists of elements. The options include</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Basic construction <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">arg</span> <span class="pre">in</span> <span class="pre">item1</span> <span class="pre">item2</span> <span class="pre">item3</span> <span class="pre">...</span></code></p></li>
+<li><p>C-style <em>for loop</em> <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">((i=1;</span> <span class="pre">i</span> <span class="pre">&lt;=</span> <span class="pre">LIMIT</span> <span class="pre">;</span> <span class="pre">i++))</span></code></p></li>
+<li><p>while and until constructs</p></li>
+</ul>
+</div></blockquote>
+<p>Simple loop over a list of items:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># note that if you put &#39;list&#39; in quotes it will be considered as one item
+for dir in dir1 dir2 dir3/subdir1; do
+  echo &quot;Archiving $dir ...&quot;
+  tar -caf ${dir//\/.}.tar.gz $dir &amp;&amp; rm -rf $dir
+done
+</pre></div>
+</div>
+<p>If path expansions used (*, ?, [], etc), loop automatically lists current directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># example below uses ImageMagick&#39;s utlity to convert all *.jpg files
+# in the current directory to *.png.
+# i.e. &#39;*.jpg&#39; similar to &#39;ls *.jpg&#39;
+for f in *.jpg; do
+ convert &quot;$f&quot; &quot;${f/.jpg/.png}&quot;   # quotes to avoid issues with the spaces in the name
+done
+
+# another command line example renames *.JPG and *.JPEG files to *.jpg
+# note: in reality one must check that a newly created *.jpg file does not exist
+for f in *.JPG *JPEG; do mv -i &quot;$f&quot; &quot;${f/.*/.jpg}&quot;; done
+
+# do ... done in certain contexts, can be omitted by framing the command block within curly brackets
+# and certain for loop can be written in one line as well
+for i in {1..10}; { echo i is $i; }
+</pre></div>
+</div>
+<p>If <em>in list</em> omitted, <em>for</em> loop goes through script/function input parameters <code class="docutils literal notranslate"><span class="pre">$&#64;</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># here is a loop to rename files which names are given as input parameters</span>
+<span class="c1"># touch file{1..3}; ./newname file1 file2 file3</span>
+<span class="k">for</span> <span class="n">old</span><span class="p">;</span> <span class="n">do</span>
+  <span class="n">read</span> <span class="o">-</span><span class="n">p</span> <span class="s2">&quot;old name $old, new name: &quot;</span> <span class="n">new</span>
+  <span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;$old&quot;</span> <span class="s2">&quot;$new&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>Note: as side note, while working with the files/directories, you will find lots of examples where
+loops can be emulated by <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">...</span> <span class="pre">-print0</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">-0</span> <span class="pre">...</span></code> pipe.</p>
+<p>Loop output can be piped or redirected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># loop other all users (on a server) to find out who has logged in within last month
+for u in $(getent group triton-users | cut -d: -f4 | tr &#39;,&#39; &#39; &#39;); do
+  echo $u: $(last -Rw -n 1 $u | head -1)
+done | sort &gt; filename
+</pre></div>
+</div>
+<p>The <em>list</em> can be anything what produces a list, like Brace expansion <em>{1..10}</em>, command substitution etc.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># on Triton, do something to all pending jobs based on squeue output
+for jobid in $(squeue -h -u $USER -t PD -o %A); do
+  scontrol update JobId=$jobid StartTime=now+5days
+done
+
+# using find to make a list of files to deal with; the benefit here is that you work
+# with the filename as a variable, which gives you flexibility as comparing to
+# &#39;find ... -exec {}&#39; or &#39;find ... print0 | xargs -0 ...&#39;
+for f in $(find . -type f -name &#39;*.sh&#39;); do
+  if ! bash -n $f &amp;&gt;/dev/null; then
+    mv $f ${f/.sh/.fixme.sh}
+  fi
+done
+</pre></div>
+</div>
+<p>C-style, expressions evaluated according to the arithmetic evaluation rules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="o">=</span><span class="mi">10</span>
+<span class="k">for</span> <span class="p">((</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">))</span>  <span class="c1"># LIMIT with no $</span>
+<span class="n">do</span>
+  <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;$i &quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>Loops can be nested.</p>
+</section>
+<section id="while-until-loops">
+<h2>While/until loops<a class="headerlink" href="#while-until-loops" title="Link to this heading"></a></h2>
+<p>Other useful loop statement are <code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">until</span></code>. Both execute continuously as long as the
+condition returns exit status zero/non-zero correspondingly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>while condition; do
+  command1
+  command2
+  ...
+done
+
+# sum of all numbers 1..n; n expected as an argument
+n=$1 i=1
+until ((i &gt; n)); do
+  ((s+=i)); ((i++))
+done
+echo Sum of 1..$n is $s
+
+# endless loop, can be stopped with Ctrl-c or killed
+# drop an email every 10 minutes about running jobs on Triton
+# can be used in combination with &#39;screen&#39;, and run in background
+while true; do
+  squeue -t R -u $USER | mail -s &#39;running jobs&#39; mister.x@aalto.fi
+  sleep 600
+done
+
+# with the help of &#39;read var&#39; passes file line by line,
+# IFS= variable before read command to prevent leading/trailing
+# whitespace from being trimmed
+input=&#39;/path/to/txt/file&#39;
+while IFS= read -r line; do
+ echo $line
+done &lt; &quot;$input&quot;
+
+# reading file fieldwise, IFS= is a delimiter, note quoting with \
+file=&#39;/path/to/file.csv&#39;
+while IFS=\; read -r f1 f2 f3 f4; do
+  printf &#39;Field1: %s, Field2: %s, Field4: %s\n&#39; &quot;$f1&quot; &quot;$f2&quot; &quot;$f4&quot;
+done &lt; &quot;$file&quot;
+
+# process substitution
+while IFS= read -r line; do
+  # do something with the lines
+done &lt; &lt;(file -b *)
+# instead, one can mistakenly try &#39;file -b * | while read line; do ... done&#39;
+# with pipe, &#39;while&#39; body will be run in a subshell, and thus all variables
+# used inside the loop will die when loop is over
+</pre></div>
+</div>
+<p>All the things mentioned above for <em>for</em> loop applicable to <code class="docutils literal notranslate"><span class="pre">while</span></code> / <code class="docutils literal notranslate"><span class="pre">until</span></code> loops.</p>
+<dl class="simple">
+<dt><em>printf</em> should be familiar to programmers, allows formatted output</dt><dd><p>similar to C printf. <a class="footnote-reference brackets" href="#printf" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+</dd>
+</dl>
+</section>
+<section id="loop-control">
+<h2>Loop control<a class="headerlink" href="#loop-control" title="Link to this heading"></a></h2>
+<p>Normally <em>for</em> loop iterates until it has processed all its input arguments.
+<em>while</em> and <em>until</em> loops iterate until the loop control returns a certain status. But if
+needed, one can terminate loop or jump to a next iteration.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> terminates the loop</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code> jump to a new iteration</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">break</span> <span class="pre">n</span></code> will terminate <em>n</em> levels of loops if they are nested, otherwise terminated only</dt><dd><p>loop in which it is embedded. Same kind of behaviour for <code class="docutils literal notranslate"><span class="pre">continue</span> <span class="pre">n</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Even though in most of the cases you can design the code to use conditionals or alike,
+<em>break</em> and <em>continue</em> certainly add the flexibility.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># here we expand an earlier example to avoid errors in case $f is missing/not accesible</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="o">*.</span><span class="n">JPG</span> <span class="o">*.</span><span class="n">JPEG</span><span class="p">;</span> <span class="n">do</span>
+  <span class="p">[[</span> <span class="o">-</span><span class="n">r</span> <span class="s2">&quot;$f&quot;</span> <span class="p">]]</span> <span class="o">||</span> <span class="p">{</span> <span class="n">echo</span> <span class="s2">&quot;$f is missing on inaccessible&quot;</span><span class="p">;</span> <span class="k">continue</span><span class="p">;</span> <span class="p">}</span>
+  <span class="n">mv</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;$f&quot;</span> <span class="s2">&quot;${f/.*/.jpg}&quot;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-2-4">
+<h2>Exercise 2.4<a class="headerlink" href="#exercise-2-4" title="Link to this heading"></a></h2>
+<div class="admonition-exercise exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise</p>
+<ul>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">d;</span> <span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></code> expand <em>tarit.sh</em> so that it would accept multiple directories.
+If no directory given, it still suppose to archive the current one.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">for</span></code> loop rename all the files in the current directory tree with the <em>.txt</em> extension to <em>.fixed.txt</em>.
+Step #1: create dummy .txt files first with <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">d{1..3};</span> <span class="pre">touch</span> <span class="pre">d{1..3}/{1..3}.txt</span></code>.
+Step #2: combine ‘for’ loop with ‘find’: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">f</span> <span class="pre">in</span> <span class="pre">$(find</span> <span class="pre">.</span> <span class="pre">-name</span> <span class="pre">'*.txt');</span> <span class="pre">do</span> <span class="pre">...</span> <span class="pre">done</span></code>.</p></li>
+<li><p>Use this page <code class="docutils literal notranslate"><span class="pre">while</span></code> example with <em>.cvs</em>, take the <em>demospace/Finnish_Univ_students_2018.csv</em>
+to count total number of students around Finland. Tip: add checking that the number of
+students field is a number <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">$totalnmb</span> <span class="pre">=~</span> <span class="pre">^[0-9]+$</span> <span class="pre">]]</span></code></p></li>
+<li><p>Using built-in arithmetic write a script <em>daystill.sh</em> that counts a number of days till a
+deadline (vacation/salary).
+Script should take a date as an argument, where date format is <code class="docutils literal notranslate"><span class="pre">days_till</span> <span class="pre">2019-6-1</span></code>.
+Tip #1: <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">-d</span> <span class="pre">GIVEN_DATE</span> <span class="pre">+&quot;%s&quot;</span></code> returns number of seconds till GIVEN_DATE since
+1970-01-01 00:00:00 UTC. <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">+%s</span></code> returns seconds till now.
+Tip #2: enough if you convert seconds to a number of days roughly <code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">...</span> <span class="pre">/60/60/24))</span></code>.</p></li>
+<li><p>Make script that takes a list of files and checks if there are files in there with
+the spaces in the name, and if there are, rename them by replacing spaces with the underscores.
+Use BASH’s builtin functionality only.</p>
+<ul class="simple">
+<li><p>As a study case, compare it against
+<code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-depth</span> <span class="pre">-name</span> <span class="pre">'*</span> <span class="pre">*'</span> <span class="pre">-execdir</span> <span class="pre">rename</span> <span class="pre">'s/</span> <span class="pre">/_/g'</span> <span class="pre">{}</span> <span class="pre">\;</span></code></p></li>
+</ul>
+</li>
+<li><p>Write separate scripts that count a sum of any <em>1+2+3+4+..+n</em>
+sequence, both the Gauss version (see above) and summation with <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">((...))</span></code>.  Where
+<em>n</em> is an argument, like <em>gauss.sh 1000</em>. Benchmark them with <code class="docutils literal notranslate"><span class="pre">time</span></code> for n=10000 or
+more.</p>
+<ul class="simple">
+<li><p>(*) Implement both methods within one script as functions and benchmark them whithin the file</p></li>
+<li><p>(*) For the direct summation one can avoid loops, how? Tip: discover <code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">$(echo</span> <span class="pre">{1..$n})</span></code></p></li>
+</ul>
+</li>
+<li><p>(*) Get familiar with the <code class="docutils literal notranslate"><span class="pre">getent</span></code> and <code class="docutils literal notranslate"><span class="pre">cut</span></code> utilities. Join them with a loop construction
+to write a <em>mygetentgroup</em> script or just a oneliner
+that generates a list of users and their real names that belong to a given group. Like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mygetentgroup group_name
+meikalaj1: Jussi Meikäläinen
+meikalam1: Maija Meikäläinen
+...``
+</pre></div>
+</div>
+</li>
+<li><p>(*) To Aalto users: on kosh/lyta run <code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">ads</span> <span class="pre">search</span> <span class="pre">samaccountname=$USER</span> <span class="pre">accountExpires</span> <span class="pre">2&gt;/dev/null</span></code>
+to get your account expiration date. It is a 18-digit timestamp, the number of 100-nanoseconds
+intervals since Jan 1, 1601 UTC. Implement a function that accept a user name, and if not given
+uses current user by default, and then converts it to the human readable time format.
+Tip: <a class="reference external" href="http://meinit.nl/convert-active-directory-lastlogon-time-to-unix-readable-time">http://meinit.nl/convert-active-directory-lastlogon-time-to-unix-readable-time</a></p>
+<ul class="simple">
+<li><p>Expand it to handle “Got 0 replies” response, i.e. account name not found.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="printf" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.bash-hackers.org/commands/builtin/printf">https://wiki.bash-hackers.org/commands/builtin/printf</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../conditionals/" class="btn btn-neutral float-left" title="Conditionals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../arrays-inputs-here-documents/" class="btn btn-neutral float-right" title="Arrays, input, Here Documents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

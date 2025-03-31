@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Initialization files and file editing &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="How to make things faster: hotkeys" href="../hotkeys/" />
+    <link rel="prev" title="Evaluations, separators and grep" href="../pipelines-grep/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Initialization files and file editing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initialization-files-and-configuration">Initialization files and configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-editing-viewing-file">Creating/editing/viewing file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-1-5">Exercise 1.5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Initialization files and file editing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/init_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="initialization-files-and-file-editing">
+<h1>Initialization files and file editing<a class="headerlink" href="#initialization-files-and-file-editing" title="Link to this heading"></a></h1>
+<section id="initialization-files-and-configuration">
+<h2>Initialization files and configuration<a class="headerlink" href="#initialization-files-and-configuration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>When the shell first starts (when you login), it reads some files.
+These are normal shell files, and it evaluates normal shell commands
+to set configuration.</p></li>
+<li><p>You can always test things in your own shell and see if it works
+before putting it in the config files.  Highly recommended!</p></li>
+<li><p>You customize your environment means setting or expanding aliases,
+variables, functions.</p></li>
+<li><p>The config files are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> (when SSH) and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> (interactive login to a workstation)</p></li>
+<li><p>they are often a symlink from one to another</p></li>
+</ul>
+</li>
+<li><p>To get an idea how complicated .bashrc can be take a look at &lt;<a class="reference external" href="https://www.tldp.org/LDP/abs/html/sample-bashrc.html">https://www.tldp.org/LDP/abs/html/sample-bashrc.html</a>&gt;</p></li>
+</ul>
+<p>One of the things to play with: command line prompt defined in PS1 <a class="footnote-reference brackets" href="#ps1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS1</span><span class="o">=</span><span class="s2">&quot;[\d </span><span class="se">\t</span><span class="s2"> \u@\h:\w ] $ &quot;</span>
+</pre></div>
+</div>
+<p>For special characters see PROMPTING at <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">bash</span></code>. To make it
+permanent, should be added to <em>.bashrc</em> like <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PS1</span></code>.</p>
+</section>
+<section id="creating-editing-viewing-file">
+<h2>Creating/editing/viewing file<a class="headerlink" href="#creating-editing-viewing-file" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>A <em>text editor</em> edits files as ASCII.  These are your best friend.
+In fact, text files are your best friend: rawest, most efficient,
+longest-lasting way of storing data.</p></li>
+<li><p>“pager” is a generic term for things that view files or data.</p></li>
+</ul>
+<p>Linux command line <em>text editors</em> like:</p>
+<ul class="simple">
+<li><p><em>nano</em> - simplest</p></li>
+<li><p><em>vim</em> - minimal.  To save&amp;quit, <code class="docutils literal notranslate"><span class="pre">ESC</span> <span class="pre">:wq</span></code></p></li>
+<li><p><em>emacs</em> - or the simplest one <em>nano</em>.  To save&amp;quit: <code class="docutils literal notranslate"><span class="pre">Ctrl-x</span>
+<span class="pre">Ctrl-c</span></code></p></li>
+</ul>
+<p>To view contents of a file in a scrollable fashion: <code class="docutils literal notranslate"><span class="pre">less</span></code></p>
+<p>Quick look at the text file <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">filename.txt</span></code> (dumps everything to
+screen- beware of non-text binary files or large files!)</p>
+<p>Other quick ways to add something to a file (no need for an editor)</p>
+<p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'Some</span> <span class="pre">sentence,</span> <span class="pre">or</span> <span class="pre">whatever</span> <span class="pre">else</span> <span class="pre">1234567!-+&gt;$#'</span> <span class="pre">&gt;</span> <span class="pre">filename.txt</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">&gt;</span> <span class="pre">filename2.txt</span></code> to finish typing and write written to the file, press enter, then Ctrl-d.</p>
+<p><strong>The best text viewer ever</strong> <code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">-S</span></code>  (to open a file in your EDITOR, hit <em>v</em>, to search through type <em>/search_word</em>)</p>
+<p><strong>Watching files while they grow</strong> <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">0</span> <span class="pre">-f</span> <span class="pre">&lt;file&gt;</span></code></p>
+<p>Try: add above mentioned <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PS1</span></code> to <em>.bashrc</em>. Remember <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.bashrc</span></code> to enable changes</p>
+</section>
+<section id="exercise-1-5">
+<h2>Exercise 1.5<a class="headerlink" href="#exercise-1-5" title="Link to this heading"></a></h2>
+<div class="admonition-exercise exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise</p>
+<ul class="simple">
+<li><p>link <em>.bash_profile</em> to <em>.bashrc</em>. Tip: see <code class="docutils literal notranslate"><span class="pre">ln</span></code> command from the previous session.</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">umask</span> <span class="pre">027</span></code> to <em>.bashrc</em>, try creating files. Tip: <code class="docutils literal notranslate"><span class="pre">umask</span> <span class="pre">-S</span></code> prints your current setting.</p></li>
+<li><p>customize a prompt <code class="docutils literal notranslate"><span class="pre">$PS1</span></code> and add it to your <em>.bashrc</em>, make sure is has
+a current directory name and the hostname in it in the format <em>hostname:/path/to/current/dir</em>.
+Hint: save the original PS1 like <code class="docutils literal notranslate"><span class="pre">oldPS1=$PS1</span></code> to be able to recover it any time.</p></li>
+</ul>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ps1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.ibm.com/developerworks/linux/library/l-tip-prompt/">https://www.ibm.com/developerworks/linux/library/l-tip-prompt/</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../pipelines-grep/" class="btn btn-neutral float-left" title="Evaluations, separators and grep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hotkeys/" class="btn btn-neutral float-right" title="How to make things faster: hotkeys" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

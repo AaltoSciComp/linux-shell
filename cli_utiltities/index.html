@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command line utilities &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Evaluations, separators and grep" href="../pipelines-grep/" />
+    <link rel="prev" title="File archiving and transferring" href="../file-archive-transfer/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command line utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utilities-the-building-blocks-of-shell">Utilities: the building blocks of shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-and-output-redirect-and-pipes">Input and output: redirect and pipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groupping-commands">Groupping commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stderr">stderr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Command line utilities</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/cli_utiltities.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="command-line-utilities">
+<h1>Command line utilities<a class="headerlink" href="#command-line-utilities" title="Link to this heading"></a></h1>
+<section id="utilities-the-building-blocks-of-shell">
+<h2>Utilities: the building blocks of shell<a class="headerlink" href="#utilities-the-building-blocks-of-shell" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>wide range of all kind of utilities available in Linux</p></li>
+<li><p>shell is a glue to bind them all together</p></li>
+<li><p>commandline is often a long list of those utilities joint into pipe
+that pass output of each other further</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">uname</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">pstree</span><span class="p">,</span> <span class="n">bg</span><span class="o">/</span><span class="n">fg</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">kill</span><span class="p">,</span> <span class="n">touch</span>
+<span class="n">ls</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">rm</span><span class="p">,</span> <span class="n">mv</span><span class="p">,</span> <span class="n">mkdir</span><span class="p">,</span> <span class="n">ln</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">stat</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">du</span><span class="p">,</span> <span class="n">chmod</span><span class="p">,</span> <span class="n">chgrp</span> <span class="p">(</span><span class="n">chown</span><span class="p">),</span>
+<span class="n">find</span><span class="p">,</span> <span class="n">tar</span><span class="p">,</span> <span class="n">gzip</span><span class="p">,</span> <span class="n">sftp</span><span class="p">,</span> <span class="n">rsync</span><span class="p">,</span> <span class="n">man</span><span class="p">,</span> <span class="n">nano</span> <span class="p">(</span><span class="n">vim</span><span class="o">/</span><span class="n">emacs</span><span class="p">),</span> <span class="n">less</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span> <span class="o">...</span>
+<span class="n">grep</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">tr</span><span class="p">,</span> <span class="n">cut</span><span class="p">,</span> <span class="n">sort</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">,</span> <span class="n">uniq</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">xargs</span><span class="p">,</span>
+<span class="n">date</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="n">cal</span><span class="p">,</span> <span class="n">nl</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">alias</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">tee</span><span class="p">,</span>
+<span class="n">sed</span><span class="p">,</span> <span class="n">awk</span><span class="p">,</span> <span class="n">paste</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Additional utilities for the software development, system administration etc</p>
+<p><strong>Coreutils by GNU</strong> You may find many other useful commands at
+<a class="reference external" href="https://www.gnu.org/software/coreutils/manual/coreutils.html">https://www.gnu.org/software/coreutils/manual/coreutils.html</a></p>
+</section>
+<section id="input-and-output-redirect-and-pipes">
+<h2>Input and output: redirect and pipes<a class="headerlink" href="#input-and-output-redirect-and-pipes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>stdout and stdin from the processes section, you remember right? each process has it</p></li>
+<li><p>by default <em>stdout</em> goes to the screen and <em>stdin</em> expects input from the keyboard</p></li>
+<li><p>we can change that on demand: pipes and redirections</p></li>
+</ul>
+<p>Pipe: output of the first command as an input for the second one <code class="docutils literal notranslate"><span class="pre">command_a</span> <span class="pre">|</span> <span class="pre">command_b</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># see what files/directories use the most space, including hidden ones
+du -hs * .[!.]* | sort -h | tail -n 10
+
+# count a number of logged in users
+w -h | wc -l
+
+# send man page to a default printer
+man -t ls | lpr
+
+# print all non-printable characters as well
+ls -lA | cat -A
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Redirects:</dt><dd><ul class="simple">
+<li><p>Like pipes, but send data to/from files instead of other processes.</p></li>
+<li><p>Replace a file: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;</span> <span class="pre">file.txt</span></code></p></li>
+<li><p>Append to a file: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;&gt;</span> <span class="pre">file.txt</span></code> (be careful you do not mix them up!)</p></li>
+<li><p>Redirect file as STDIN: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&lt;</span> <span class="pre">file</span></code>  (in case program accepts STDIN only)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">Hello</span> <span class="n">World</span> <span class="o">&gt;</span> <span class="n">hello</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">ls</span> <span class="o">-</span><span class="n">lH</span> <span class="o">&gt;&gt;</span> <span class="n">current_dir_ls</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># create a few dummy files</span>
+<span class="n">echo</span> <span class="s1">&#39;a b c&#39;</span> <span class="o">&gt;</span> <span class="n">file1</span>
+<span class="n">echo</span> <span class="s1">&#39;x y z&#39;</span> <span class="o">&gt;</span> <span class="n">file2</span>
+
+<span class="c1"># join two files into one</span>
+<span class="n">cat</span> <span class="n">file1</span> <span class="n">file2</span> <span class="o">&gt;</span> <span class="n">file3</span>
+
+<span class="c1"># go through file1 and replace spaces with a new line mark, then output to file2</span>
+<span class="n">tr</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39; &#39;</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">&lt;</span> <span class="n">file1</span> <span class="o">&gt;</span> <span class="n">file4</span>
+<span class="c1"># the same result but another approach: (and more readable format)</span>
+<span class="n">cat</span> <span class="n">file2</span> <span class="o">|</span> <span class="n">tr</span> <span class="o">-</span><span class="n">s</span> <span class="s1">&#39; &#39;</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">&gt;</span> <span class="n">file5</span>
+
+<span class="c1"># join file1 and 2 lines one by one using : as a delimiter</span>
+<span class="n">paste</span> <span class="o">-</span><span class="n">d</span> <span class="p">:</span> <span class="n">file4</span> <span class="n">file5</span> <span class="o">&gt;</span> <span class="n">file6</span>
+
+<span class="c1"># get rid of output, &#39;null&#39; is a special device</span>
+<span class="n">command</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+</pre></div>
+</div>
+<p><strong>This is the unix philosophy</strong> and the true power of the shell.  The
+unix philosophy is a lot of small, specialized, good programs
+which can be easily connected together. The beauty of the cli are elegant one-liners
+i.e. list of commands executed in one line.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># tar and copy directory to a remote host</span>
+<span class="n">tar</span> <span class="n">czf</span> <span class="o">-</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">dir</span> <span class="o">|</span> <span class="n">ssh</span> <span class="n">LOGIN</span><span class="nd">@remote</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">fi</span> <span class="s1">&#39;cat &gt; path/to/archive/dir/archive_file.tar.gz&#39;</span>
+
+<span class="c1"># to remove all carriage returns and Ctrl-z characters from a Windows file</span>
+<span class="n">cat</span> <span class="n">win</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">tr</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;</span><span class="se">\15\32</span><span class="s1">&#39;</span> <span class="o">&gt;</span> <span class="n">unix</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># extract user names and store them to a file</span>
+<span class="n">getent</span> <span class="n">passwd</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span> <span class="o">-</span><span class="n">f1</span><span class="p">,</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="n">users</span>
+
+<span class="c1"># print the name of the newest file in the directory (non-dot)</span>
+<span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">tF</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">E</span> <span class="s1">&#39;*/|@&#39;</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://www.bashoneliners.com/">http://www.bashoneliners.com/</a></p>
+</section>
+<section id="groupping-commands">
+<h2>Groupping commands<a class="headerlink" href="#groupping-commands" title="Link to this heading"></a></h2>
+<p>To dump output of all commands at once: group them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">command1</span><span class="p">;</span> <span class="n">command2</span><span class="p">;</span> <span class="p">}</span> <span class="o">&gt;</span> <span class="n">filename</span>  <span class="c1"># commands run in the current shell  as a group</span>
+<span class="p">(</span> <span class="n">command1</span><span class="p">;</span> <span class="n">command2</span><span class="p">;</span> <span class="p">)</span> <span class="o">&gt;</span> <span class="n">filename</span>  <span class="c1"># commands run in external shell as a group</span>
+</pre></div>
+</div>
+</section>
+<section id="stderr">
+<h2>stderr<a class="headerlink" href="#stderr" title="Link to this heading"></a></h2>
+<p>A separate stream (=file descriptor), though we can direct it as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># redirect both stderr and stdout to /dev/null</span>
+<span class="n">ping</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="mf">8.8.8.8</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="c1"># piping both</span>
+<span class="n">command_a</span> <span class="o">&amp;|</span> <span class="n">command_b</span>
+</pre></div>
+</div>
+<p>Advanced usage cases, like subshells, process substitution, other file descriptors
+than stdin/stderr/stdout etc will be covered in the Part 2 of this course.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../file-archive-transfer/" class="btn btn-neutral float-left" title="File archiving and transferring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../pipelines-grep/" class="btn btn-neutral float-right" title="Evaluations, separators and grep" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

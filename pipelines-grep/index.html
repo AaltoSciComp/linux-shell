@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluations, separators and grep &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Initialization files and file editing" href="../init_files/" />
+    <link rel="prev" title="Command line utilities" href="../cli_utiltities/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluations, separators and grep</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#evaluations-and-separators">Evaluations and separators:  ;  &amp;&amp;  ||</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grep">grep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-1-4">Exercise 1.4</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Evaluations, separators and grep</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/pipelines-grep.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evaluations-separators-and-grep">
+<h1>Evaluations, separators and grep<a class="headerlink" href="#evaluations-separators-and-grep" title="Link to this heading"></a></h1>
+<section id="evaluations-and-separators">
+<h2>Evaluations and separators:  ;  &amp;&amp;  ||<a class="headerlink" href="#evaluations-and-separators" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>With ; you can put several commands on the same line.</p></li>
+</ul>
+<p>Chaining: <code class="docutils literal notranslate"><span class="pre">command_a</span> <span class="pre">;</span> <span class="pre">command_b</span></code>: always runs both commands.</p>
+<p>Remember exit codes?  In shell, 0=success and anything 1-255=failure.
+Note that this is opposite of normal Boolean logic!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code> are <a class="reference external" href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">short-circuit</a> (lazy)
+boolean operators.  They can be used for quick conditionals.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">command_a</span> <span class="pre">&amp;&amp;</span> <span class="pre">command_b</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">command_a</span></code> is successful, also run <code class="docutils literal notranslate"><span class="pre">command_b</span></code></p></li>
+<li><p>final exit code is last evaluated one, which has the role of Boolean <em>and</em>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">command_a</span> <span class="pre">||</span> <span class="pre">command_b</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">command_a</span></code> is <em>not</em> successful, also run <code class="docutils literal notranslate"><span class="pre">command_b</span></code></p></li>
+<li><p>final exit code is that of the last evaluated command, which has
+the role of Boolean <em>or</em>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Hint</strong> <code class="docutils literal notranslate"><span class="pre">command_a</span> <span class="pre">&amp;&amp;</span> <span class="pre">command_b</span> <span class="pre">||</span> <span class="pre">command_c</span></code></p>
+<p>Try: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/nonexistent_dir</span> <span class="pre">&amp;&amp;</span> <span class="pre">ls</span> <span class="pre">/nonexistent_dir</span></code> compare with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/nonexistent_dir;</span> <span class="pre">ls</span> <span class="pre">/nonexistent_dir</span></code></p>
+<p>Try: <code class="docutils literal notranslate"><span class="pre">ping</span> <span class="pre">-c</span> <span class="pre">1</span> <span class="pre">8.8.8.8</span> <span class="pre">&gt;</span> <span class="pre">/dev/null</span> <span class="pre">&amp;&amp;</span> <span class="pre">echo</span> <span class="pre">online</span> <span class="pre">||</span> <span class="pre">echo</span> <span class="pre">offline</span></code></p>
+</section>
+<section id="grep">
+<h2>grep<a class="headerlink" href="#grep" title="Link to this heading"></a></h2>
+<p>Later on you’ll find out that <code class="docutils literal notranslate"><span class="pre">grep</span></code> is one of the most useful
+commands you ever discover on Linux (except for all the <em>other</em> most
+useful commands ever)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>  <span class="c1"># grep lines that match &lt;pattern&gt;</span>
+ <span class="o">-</span><span class="ow">or</span><span class="o">-</span>
+<span class="n">command</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;</span>  <span class="c1"># grep lines from stdin</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># search all the files in the dir/ and its subdirs, to match the word &#39;is&#39;, case insensitive</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">R</span> <span class="o">-</span><span class="n">iw</span> <span class="s1">&#39;is&#39;</span> <span class="nb">dir</span><span class="o">/</span>
+
+<span class="c1"># grep all lines from *command* output, except those that have &#39;comment&#39; in it</span>
+<span class="o">*</span><span class="n">command</span><span class="o">*</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="n">comment</span>
+
+<span class="c1"># displaying 2 extra lines before and after the match (-A just after, -B just before)</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">C</span> <span class="mi">2</span> <span class="s1">&#39;search word&#39;</span> <span class="n">file</span>
+
+<span class="c1"># counts the number of matches</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="c1"># shows only the matched part of the string (by default grep shows whole line)</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="c1"># accepts way more advanced regular expressions as a search pattern</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="o">&lt;</span><span class="n">extended_regexpr</span><span class="o">&gt;</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For details on what &lt;pattern&gt; could be, look for REGULAR EXPRESSIONS
+at <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">grep</span></code>.  Some examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># grep emails to a list</span>
+<span class="n">grep</span> <span class="o">-</span><span class="n">Eio</span> <span class="s2">&quot;</span><span class="se">\b</span><span class="s2">[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,6}</span><span class="se">\b</span><span class="s2">&quot;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># grep currently running firefox processes</span>
+<span class="n">ps</span> <span class="n">auxw</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">firefox</span>
+
+<span class="c1"># grep H1 and H2 header lines out of HTML file</span>
+<span class="n">grep</span> <span class="s2">&quot;&lt;[Hh][12]&gt;&quot;</span> <span class="n">file</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-1-4">
+<h2>Exercise 1.4<a class="headerlink" href="#exercise-1-4" title="Link to this heading"></a></h2>
+<div class="admonition-exercise exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise</p>
+<ul class="simple">
+<li><p>make a pipe that counts number of files/directories (including dot files) in your directory</p></li>
+<li><p>grep directories out of <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code></p></li>
+<li><p>grep all but blank lines of the ‘man cut | grep …’</p></li>
+<li><p>Using pipes and commands echo/tr/uniq, find doubled words out of <code class="docutils literal notranslate"><span class="pre">My</span>
+<span class="pre">Do</span> <span class="pre">Do</span> <span class="pre">list:</span> <span class="pre">Find</span> <span class="pre">a</span> <span class="pre">a</span> <span class="pre">Doubled</span> <span class="pre">Word</span></code>.</p></li>
+<li><p>If you are on a multiuser system, count unique logged in users.
+Tip: <code class="docutils literal notranslate"><span class="pre">w</span></code> or <code class="docutils literal notranslate"><span class="pre">users</span></code> gives you a list of all currently login users,
+many of them have several sessions open. Commands to discover: cut / sort / wc</p></li>
+<li><p>(*) Play with the commands grep, cut: find at least two ways to
+extract IP addresses out of /etc/hosts. Tip: <em>grep</em> has <em>-o</em> option, thus one can build
+a regular expression that will grab exactly what you need.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../cli_utiltities/" class="btn btn-neutral float-left" title="Command line utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../init_files/" class="btn btn-neutral float-right" title="Initialization files and file editing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

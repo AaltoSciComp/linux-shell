@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Variables, functions, environment &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Conditionals" href="../conditionals/" />
+    <link rel="prev" title="Quoting, substitutions, aliases" href="../quoting-substitution-aliases/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../starting-commands/">Starting out</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Variables, functions, environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#your-bin-and-path">Your ~/bin and PATH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#magic-of-bash-variables">Magic of BASH variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2-2">Exercise 2.2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Variables, functions, environment</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/variables-functions-environments.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="variables-functions-environment">
+<h1>Variables, functions, environment<a class="headerlink" href="#variables-functions-environment" title="Link to this heading"></a></h1>
+<section id="your-bin-and-path">
+<h2>Your ~/bin and PATH<a class="headerlink" href="#your-bin-and-path" title="Link to this heading"></a></h2>
+<p>The PATH is an environment variable. It is a colon delimited list of directories that your
+shell searches through when you enter a command. Binaries are at <em>/bin</em>, <em>/usr/bin</em>,
+<em>/usr/local/bin</em> etc. The best place for your own is <em>~/bin</em>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># add to .bashrc</span>
+<span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;$PATH:$HOME/bin&quot;</span>
+<span class="c1"># after you have your script written, set +x bit and run it</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">~/</span><span class="nb">bin</span><span class="o">/</span><span class="n">script_name</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">script_name</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>You can find where a program is using <code class="docutils literal notranslate"><span class="pre">which</span></code> or <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">-a</span></code>, we recommend the later one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="o">-</span><span class="n">a</span> <span class="n">ls</span>      <span class="c1"># a binary</span>
+<span class="nb">type</span> <span class="o">-</span><span class="n">a</span> <span class="n">cd</span>      <span class="c1"># builtin</span>
+</pre></div>
+</div>
+<p>Other options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># +x bit and ./</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>   <span class="c1"># that works if script.sh has #!/bin/bash as a first line</span>
+<span class="c1"># with no x bit</span>
+<span class="n">bash</span> <span class="n">script</span><span class="o">.</span><span class="n">sh</span>  <span class="c1"># this will work even without #!/bin/bash</span>
+</pre></div>
+</div>
+<p><strong>Extension is optional</strong> note that <em>.sh</em> extension is optional, script may have any name</p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<p>In shell, variables define your environment. Common practice is that environmental vars are written IN CAPITAL: $HOME, $SHELL, $PATH, $PS1, $RANDOM. To list all defined variables <code class="docutils literal notranslate"><span class="pre">printenv</span></code>. All variables can be used or even redefined. No error if you call an undefined var, it is just considered to be empty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># assign a variable, note, no need for ; delimiter
+var1=100 var2=&#39;some string&#39;
+
+# calling a variable is just putting a $ dollar sign in a front
+echo &quot;var1 is $var1&quot;
+
+# re-assign to another var
+var3=$var1
+
+# when appending a variable, it is considered to be a string
+var+=&lt;string&gt;/&lt;integer&gt;
+  var1+=50  # var1 is now 10050
+  var2+=&#39; more&#39; # var2 is &#39;some string more&#39;
+# we come later to how to deal with the integers (Arithmetic Expanssions $(()) below)
+</pre></div>
+</div>
+<p>There is no need to declare things in advance: there is flexible
+typing.  In fact, you can access any variable, defined or not.
+However, you can still declare things to be of a certain type if you
+need to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">declare</span> <span class="o">-</span><span class="n">r</span> <span class="n">var</span><span class="o">=</span><span class="n">xyz</span>   <span class="c1"># read-only</span>
+<span class="n">declare</span> <span class="o">-</span><span class="n">i</span> <span class="n">var</span>  <span class="c1"># must be treated as an integer, &#39;man bash&#39; for other declare options</span>
+</pre></div>
+</div>
+<p>BASH is smart enough to distinguish a variable inline without special quoting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dir=$HOME/dir1 fname=file fext=xyz echo &quot;$dir/$fname.$fext&quot;
+</pre></div>
+</div>
+<p>though if variable followed by a number or a letter, you have to
+explicitly separate it with the braces syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo ${dir}2/${file}abc.$fext
+</pre></div>
+</div>
+<p>Built-in vars:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>$?  exit status of the last command</p></li>
+<li><p>$$  current shell pid</p></li>
+<li><p>$#  number of input parameters</p></li>
+<li><p>$0  running script name, full path</p></li>
+<li><p>$FUNCNAME  function name being executed, [ note: actually an array ${FUNCNAME[*]} ]</p></li>
+<li><p>$1, $2 … input parameter one by one (function/script)</p></li>
+<li><p>“$&#64;” all input parameters as is in one line</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">()</span> <span class="p">{</span> <span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot; number of input params: $#</span><span class="se">\n</span><span class="s2"> input params: $@</span><span class="se">\n</span><span class="s2"> shell process id: $$</span><span class="se">\n</span><span class="s2"> script name: $0</span><span class="se">\n</span><span class="s2"> function name: $FUNCNAME&quot;</span><span class="p">;</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">};</span> <span class="n">f</span> <span class="n">arg1</span> <span class="n">arg2</span><span class="p">;</span> <span class="n">echo</span> <span class="s2">&quot;exit code: $?&quot;</span>
+</pre></div>
+</div>
+<p>What if you assing a variable to a variable like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var2=&#39;something&#39;
+var1=\$var2
+echo $var1     # will return &#39;$var2&#39; literally
+
+# BASH provides built-in &#39;eval&#39; command that reads the string then re-evaluate it
+# if variables etc found, they are given another chance to show themselves
+
+eval echo $var1  # returns &#39;something&#39;
+</pre></div>
+</div>
+<p>In more realistic examples it is often used to compose a command string based on input
+parameters or some conditionals and then evaluate it at very end.</p>
+</section>
+<section id="magic-of-bash-variables">
+<h2>Magic of BASH variables<a class="headerlink" href="#magic-of-bash-variables" title="Link to this heading"></a></h2>
+<p>BASH provides wide abilities to work with the vars “on-the-fly” with
+<code class="docutils literal notranslate"><span class="pre">${var...}</span></code> like constructions.  This lets you do simple text
+processing easily.  These are nice, but are easy to forget so you will
+need to look them up when you need them.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Assign a $var with default <em>value</em> if not defined: <code class="docutils literal notranslate"><span class="pre">${var:=value}</span></code></p></li>
+<li><p>Returns $var value or a default <em>value</em> if not defined: <code class="docutils literal notranslate"><span class="pre">${var:-value}</span></code></p></li>
+<li><p>Print an <em>error_message</em> if var empty: <code class="docutils literal notranslate"><span class="pre">${var:?error_message}</span></code></p></li>
+<li><p>Extract a substring: <code class="docutils literal notranslate"><span class="pre">${var:offset:length}</span></code>, example <code class="docutils literal notranslate"><span class="pre">var=abcde;</span> <span class="pre">echo</span> <span class="pre">${var:1:3}</span></code> returns ‘bcd’</p></li>
+<li><p>Variable’s length: <code class="docutils literal notranslate"><span class="pre">${#var}</span></code></p></li>
+<li><p>Replace beginning part: <code class="docutils literal notranslate"><span class="pre">${var#prefix}</span></code></p></li>
+<li><p>Replace trailing part: <code class="docutils literal notranslate"><span class="pre">${var%suffix}</span></code></p></li>
+<li><p>Replace <em>pattern</em> with the <em>string</em>: <code class="docutils literal notranslate"><span class="pre">${var/pattern/string}</span></code></p></li>
+<li><p>Modify the case of alphabetic characters: <code class="docutils literal notranslate"><span class="pre">${var,,}</span></code> for lower case or <code class="docutils literal notranslate"><span class="pre">${var^^}</span></code> for upper case</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># will print default_value, which can be a variable
+var=&#39;&#39;; echo ${var:-default_value}
+var1=another_value; var=&#39;&#39;;  echo ${var:-$var1}
+
+# assign the var if it is not defined
+# note that we use &#39;:&#39; no operation command, to avoid BASH&#39;s &#39;command not found&#39; errors
+: ${var:=default_value}
+
+# will print &#39;not defined&#39; in both cases
+var=&#39;&#39;;  echo ${var:?not defined}
+var=&#39;&#39;; err=&#39;not defined&#39;; echo ${var:?$err}
+
+# will return 8, that is a number of characters
+var=&#39;abcdefgh&#39;; echo ${#var}
+
+# returns file.ext
+var=26_file.ext; echo ${var#[0-9][0-9]_}
+
+# returns archive.tar.gz out of full path
+fpath=/home/user/archive.tar.gz; echo ${fpath##*/}
+# returns path with no file name
+echo ${fpath%/*}
+
+# in both cases returns photo
+var=photo.jpeg; echo ${var%.jpeg}
+var=26_file.ext; echo ${var%.[a-z][a-z][a-z]}
+
+# returns &#39;I hate you&#39;
+var=&#39;I love you&#39;; echo ${var/love/hate}
+# other options for substitutions
+var=&#39; some text &#39;;
+echo ${var/# /}  # returns without the first space
+echo ${var/% /}  # without the last space
+echo ${var// /}  # without spaces at all
+</pre></div>
+</div>
+<p>Except for the <em>:=</em> the variable remains unchanged. If you want to
+redefine a variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var=&#39;I love you&#39;; var=${var/love/hate}; echo $var  # returns &#39;I hate you&#39;
+</pre></div>
+</div>
+<p>BASH allows indirect referencing, consider:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var1=&#39;Hello&#39; var2=var1
+echo $var2  # returns text &#39;var1&#39;
+echo ${!var2}  # returns &#39;Hello&#39; instead of &#39;var1&#39;
+</pre></div>
+</div>
+<p>To address special characters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># replacing all tabs with the spaces in the var
+var=${var//$&#39;\t&#39;/ }
+</pre></div>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>Alias is a shortcut to a long command, while function is a piece of programming
+that has logic and can accept input parameters. Functions can be defined on-the-fly
+from the cli, or can go to a file. Let us set <em>~/bin/functions</em> and collect
+everything useful there.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># whoami alternative turned into function
+me() {
+  $(id -un):$(id -gn)@$(hostname -s)
+}
+
+# turn check space usage into a function
+spaceusage() {
+  du -hs * .[!.]* | sort -h
+}
+
+# in one line, note spaces and ; delimiters
+myfunction() { command; command; }
+# -or- in a full format
+function myfunction { command; command; }
+</pre></div>
+</div>
+<p>Read functions into the current shell environment and run them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="nb">bin</span><span class="o">/</span><span class="n">functions</span>
+<span class="n">me</span>
+<span class="n">spaceusage</span>
+</pre></div>
+</div>
+<p>The function refers to passed arguments by their position (not by name),
+that is $1, $2, and so forth:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>func_name arg1 arg2 arg3  # will become $1 $2 $3
+
+# advanced version of spaceusage using BASH variables magic
+spaceusage() {
+  du -hs ${1:-.}/* ${1:-.}/.[!.]* | sort -h;
+}
+</pre></div>
+</div>
+<p>Functions in BASH have <code class="docutils literal notranslate"><span class="pre">return</span></code> but it only returns the exit code. Useful
+in cases where you want to ‘exit’ the function and continue to the rest of the script.
+By default functions’ variables are in the global space, once chaged in the function is
+seen everywhere else. <code class="docutils literal notranslate"><span class="pre">local</span></code> can be used to localize the vars. Compare:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var=2; f() { var=3; }; f; echo $var
+var=2; f() { local var=3; }; f; echo $var
+
+# get filename out of path
+filename() {
+  local fpath=${1:?path is missing} &amp;&amp; \
+  echo ${fpath##*/}
+}
+
+# filepath with no name
+filepath() {
+  local fpath=${1:?path is missing} &amp;&amp; \
+  echo ${fpath%/*}
+}
+</pre></div>
+</div>
+<p>If you happened to build a function in an alias way, redefining a command name while
+using that original command inside the function, you need to type <em>command</em> before
+the name of the command, like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="p">()</span> <span class="p">{</span> <span class="n">command</span> <span class="n">rm</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;$@&quot;</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>here you avoid internal loops (forkbombs).</p>
+<p>Exporting a function with <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">-f</span> <span class="pre">function_name</span></code> lets you pass a function to a sub-shell,
+by storing that function in a environment variable. Helpful when you want to use it within a
+command substitution, or any other case that launches a subshell, like
+<code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">...</span> <span class="pre">-exec</span> <span class="pre">bash</span> <span class="pre">-c</span> <span class="pre">'function_name</span> <span class="pre">{}'</span> <span class="pre">\;</span></code>.</p>
+</section>
+<section id="exercise-2-2">
+<h2>Exercise 2.2<a class="headerlink" href="#exercise-2-2" title="Link to this heading"></a></h2>
+<div class="admonition-exercise exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise</p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">spaceusage()</span></code>, <code class="docutils literal notranslate"><span class="pre">filename()</span></code>, <code class="docutils literal notranslate"><span class="pre">filepath()</span></code>, <code class="docutils literal notranslate"><span class="pre">me()</span></code> to your <em>~/bin/functions</em> and play with them.
+Note: here and later, we suggest that all newly created functions would go to <em>~/bin/functions</em> file.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">filename()</span></code> function make a <code class="docutils literal notranslate"><span class="pre">filebasename()</span></code> so that function would output a <em>filename</em> with no
+extension. Like <code class="docutils literal notranslate"><span class="pre">filebasename</span> <span class="pre">path/to/archive.tar.gz</span></code> would return <em>archive</em>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">find</span></code> utility, implement a <em>fast find</em> (=*ff*) function <code class="docutils literal notranslate"><span class="pre">ff</span> <span class="pre">word</span></code>. This function must return all
+the files and directories in the current folder which name contains <em>&lt;word&gt;</em>. Let it be case insensitive.
+Hint: <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-iname</span> <span class="pre">...</span></code></p></li>
+<li><p>(*) Make an advanced version of <code class="docutils literal notranslate"><span class="pre">ff()</span></code> that would accept a directory name to search at as a second
+argument <em>($2)</em> and if it is missing then would use current. For a example <code class="docutils literal notranslate"><span class="pre">ff</span> <span class="pre">word</span> <span class="pre">path/to/</span></code>.</p></li>
+<li><p>(*) <code class="docutils literal notranslate"><span class="pre">:()</span> <span class="pre">{</span> <span class="pre">:|:&amp;;</span> <span class="pre">};:</span></code> is a BASH fork-bomb [WARNING: Do not run it!]. Can you explain how it works it?
+<em>&amp;</em> in this case sends process to the background.</p></li>
+<li><p>(*) On Triton write a function that <code class="docutils literal notranslate"><span class="pre">lfs</span> <span class="pre">find</span></code> all the dirs/files at $WRKDIR that do not
+belong to your group and fix the group ownership. Use <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">...</span> <span class="pre">|</span> <span class="pre">xargs</span></code>. Tip: on Triton at
+WRKDIR your username $USER and group name are the same. On any other filesystem, <code class="docutils literal notranslate"><span class="pre">$(id</span> <span class="pre">-gn)</span></code>
+returns your group name. One can</p></li>
+<li><p>(*) Expand the function above to set group’s s-bit on all the $WRKDIR directories.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quoting-substitution-aliases/" class="btn btn-neutral float-left" title="Quoting, substitutions, aliases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../conditionals/" class="btn btn-neutral float-right" title="Conditionals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

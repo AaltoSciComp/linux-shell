@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starting out &mdash; Linux shell tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="aaltoscicomp.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about/" />
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Processes" href="../processes/" />
+    <link rel="prev" title="Basic shell" href="../the-shell/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Linux shell tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">PART #1. Linux shell basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../the-shell/">Basic shell</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Starting out</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starter">Starter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-minimum-to-get-started">A minimum to get started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help-in-terminal">Getting help in terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-viewing-editing">File viewing / editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-most-common-commands">The most common commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-and-external-commands">(*) Built-in and external commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../processes/">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files-and-directories/">Files and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find/">Find</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file-archive-transfer/">File archiving and transferring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_utiltities/">Command line utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines-grep/">Evaluations, separators and grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../init_files/">Initialization files and file editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hotkeys/">How to make things faster: hotkeys</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PART #2. Linux shell scripting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quoting-substitution-aliases/">Quoting, substitutions, aliases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables-functions-environments/">Variables, functions, environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conditionals/">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loops/">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arrays-inputs-here-documents/">Arrays, input, Here Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traps-debugging-profiling/">Traps, debugging, profiling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel-crontab-perlawksed/">Parallel, crontab, perl/awk/sed</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/">About us</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../to-continue/">To continue: course development ideas/topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bonus-material/">Bonus material</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Linux shell tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Starting out</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/starting-commands.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="starting-out">
+<h1>Starting out<a class="headerlink" href="#starting-out" title="Link to this heading"></a></h1>
+<section id="starter">
+<h2>Starter<a class="headerlink" href="#starter" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>du -hs * .[!.]* | sort -h
+tar czf - $d | ssh kosh.aalto.fi &#39;cat &gt; public_html/$d.tar.gz &amp;&amp; chmod a+r $d.tar.gz&#39;
+find $d -type f \( ! -perm /g+w  -o -perm /o+w \) -exec chmod u+rwX,g+rwX,o-wx {} \;
+</pre></div>
+</div>
+</section>
+<section id="a-minimum-to-get-started">
+<h2>A minimum to get started<a class="headerlink" href="#a-minimum-to-get-started" title="Link to this heading"></a></h2>
+<p>Try them right away:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>whoami (-or- id)
+echo $SHELL
+uname -a (-or- hostnamectl if available)
+pwd
+ls -lA
+cd
+date
+grep searchword filename
+cat filename
+</pre></div>
+</div>
+<p>In combination with opeators <em>&gt;</em> and <em>|</em> serves, plus text editor and a viewer
+like <em>less</em>, you should feel yourself safe already now.</p>
+<p>For Aalto users: is your default shell a <code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code>? Login to kosh/taltta and run <code class="docutils literal notranslate"><span class="pre">chsh</span> <span class="pre">-s</span> <span class="pre">/bin/bash</span></code></p>
+</section>
+<section id="getting-help-in-terminal">
+<h2>Getting help in terminal<a class="headerlink" href="#getting-help-in-terminal" title="Link to this heading"></a></h2>
+<p>Before you Google for the command examples, try:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">command_name</span>
+</pre></div>
+</div>
+<p>Your best friend ever – <code class="docutils literal notranslate"><span class="pre">man</span></code> – collection of manuals. Type
+<em>/search_word</em> for searching through the man page, navigating between matches with <em>n</em>
+and <em>shift + n</em>, <em>q</em> for the exit.</p>
+<p>Additionally, many, but not all, commands have a usage summary if run with <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">--help</span></code>
+or <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">-h</span></code> options.</p>
+</section>
+<section id="file-viewing-editing">
+<h2>File viewing / editing<a class="headerlink" href="#file-viewing-editing" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">filename</span>
+<span class="n">less</span> <span class="n">filename</span>  <span class="c1"># &#39;q&#39; to exit</span>
+<span class="n">nano</span> <span class="n">filename</span>  <span class="c1"># Ctrl-x to exit</span>
+</pre></div>
+</div>
+</section>
+<section id="the-most-common-commands">
+<h2>The most common commands<a class="headerlink" href="#the-most-common-commands" title="Link to this heading"></a></h2>
+<p>The ones we use in this tutorial, subjective:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">echo</span><span class="p">,</span> <span class="n">whoami</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">fg</span><span class="p">,</span> <span class="n">jobs</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">less</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">kill</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">pgrep</span><span class="p">,</span>
+<span class="n">pstree</span><span class="p">,</span> <span class="n">htop</span><span class="p">,</span> <span class="n">du</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> <span class="n">ls</span><span class="p">,</span> <span class="n">mkdir</span><span class="p">,</span> <span class="n">touch</span><span class="p">,</span> <span class="n">ln</span><span class="p">,</span> <span class="n">rm</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">mv</span><span class="p">,</span> <span class="n">mkdir</span><span class="p">,</span> <span class="n">find</span><span class="p">,</span> <span class="n">rsync</span><span class="p">,</span> <span class="n">tar</span><span class="p">,</span> <span class="n">scp</span><span class="p">,</span> <span class="n">ssh</span><span class="p">,</span>
+<span class="n">alias</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="n">umask</span><span class="p">,</span> <span class="n">export</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span> <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">,</span> <span class="n">wc</span><span class="p">,</span> <span class="n">grep</span><span class="p">,</span> <span class="n">sort</span><span class="p">,</span> <span class="n">uniq</span><span class="p">,</span> <span class="n">tr</span><span class="p">,</span> <span class="n">diff</span><span class="p">,</span> <span class="n">killall</span><span class="p">,</span>
+<span class="n">gzip</span><span class="p">,</span> <span class="n">nano</span><span class="p">,</span> <span class="n">xargs</span><span class="p">,</span> <span class="n">chown</span><span class="p">,</span> <span class="n">chmod</span><span class="p">,</span> <span class="n">su</span><span class="p">,</span> <span class="n">sudo</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">read</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">ping</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Plus shell programming language constructs adn control operators.</p>
+<p>Important remark: not all of the external commands are available on all the systems. Even Linux
+distribution bundles may differ not speaking of the macOS setup and MS Windows packages.</p>
+<p><strong>Hint</strong> <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">-a</span></code> to find binary location on the filesystem.</p>
+</section>
+<section id="built-in-and-external-commands">
+<h2>(*) Built-in and external commands<a class="headerlink" href="#built-in-and-external-commands" title="Link to this heading"></a></h2>
+<p>There are two types of commands:</p>
+<ul class="simple">
+<li><p>shell built-in: <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">echo</span></code>, <code class="docutils literal notranslate"><span class="pre">alias</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">umask</span></code> etc.</p></li>
+<li><p>external: <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">less</span></code>, <code class="docutils literal notranslate"><span class="pre">lpr</span></code>, <code class="docutils literal notranslate"><span class="pre">cat</span></code>, etc.</p></li>
+<li><p>some can be both: e.g. <code class="docutils literal notranslate"><span class="pre">echo</span></code>.  Options not always the same!</p></li>
+<li><p>For the most part, these behave similarly, which is a good thing!
+You don’t have to tell which is which.</p></li>
+<li><p><strong>echo</strong>: prints out <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">something</span> <span class="pre">to</span> <span class="pre">type</span></code> # types whatever you put after</p></li>
+</ul>
+<p><strong>Disable built-in command</strong> <code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">-n</span> <span class="pre">echo</span></code>, after this <em>/usr/bin/echo</em>
+becomes a default instead of built-in <em>echo</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../the-shell/" class="btn btn-neutral float-left" title="Basic shell" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processes/" class="btn btn-neutral float-right" title="Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Aalto Science-IT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
